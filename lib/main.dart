@@ -34,13 +34,6 @@ import 'package:flutter_launcher_icons/windows/windows_icon_generator.dart';
 import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-// teste burro
-/// barra barra barra
-// teste mediano
-
-//fiz merda no seu
-//merda 23
-
 import 'componentes/theme/theme.dart';
 
 void main() async {
