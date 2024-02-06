@@ -25,7 +25,7 @@ InputDecoration getAuthenticationInputDecoration(String label) {
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(5),
-      borderSide: const BorderSide(color: MinhasCores.azulEscuro, width: 1),
+      borderSide: const BorderSide(color: Color(0xFF0A6D92), width: 1),
     ),
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(5),
