@@ -85,11 +85,11 @@ class _MapViewLixoState extends State<MapViewLixo> {
       }
     });
 
-    MapMarkers.getMarkers(context).then((result) {
+    /*MapMarkers.getMarkers(context).then((result) {
       setState(() {
         markers = result;
       });
-    });
+    });*/
 
     centerOnBusTimer = Timer.periodic(Duration(minutes: 1), (Timer timer) {
       _centerOnBus();
