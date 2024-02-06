@@ -35,7 +35,10 @@ import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 //rony fazendo merda
 //oi 2
-//wallace bugado
+
+//fiz merda
+//rony faz merda
+//wallace buga
 //teste rony
 //teste rony 2
 
