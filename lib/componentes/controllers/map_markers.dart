@@ -40,165 +40,150 @@ class MapMarkers {
 
   static Future<Set<Marker>> getMarkers(BuildContext context) async {
     final Set<Marker> markers = {};
-
     final BitmapDescriptor resizedBusIcon = await _getResizedBusIcon();
 
     markers.add(
       Marker(
         markerId: MarkerId('marker1'),
-        position: LatLng(-22.86972436664944, -43.78605117954447),
+        position: LatLng(-22.870407, -43.796822),
         icon: resizedBusIcon,
         onTap: () {
           _showMarkerInfo(
             context,
-            'Rua Doutor Curvelo Cavalcanti Próximo Ao 3990',
-            'Descrição do ponto 1.',
+            'Informações do Ponto 1',
+            'Descrição do ponto 1',
             'assets/images/pontos/biaestampa.jpg',
+            LatLng(-22.870407, -43.796822),
           );
         },
       ),
     );
+
     markers.add(
       Marker(
         markerId: MarkerId('marker2'),
-        position: LatLng(-22.86955482216848, -43.79304701349339),
+        position: LatLng(-22.869990, -43.783984),
         icon: resizedBusIcon,
         onTap: () {
           _showMarkerInfo(
             context,
-            'Avenida Pref. Isoldackson Cruz de Brito, 1042',
-            'Descrição do ponto 2.',
-            'assets/images/pontos/biaestampa.jpg',
+            'Informações do Ponto 2',
+            'Descrição do ponto 2',
+            'assets/images/pontos/outra_imagem.jpg',
+            LatLng(-22.869990, -43.783984),
           );
         },
       ),
     );
-
     markers.add(
       Marker(
         markerId: MarkerId('marker3'),
-        position: LatLng(-22.827972276967856, -43.76008491653742),
+        position:
+            LatLng(-22.872428, -43.774644), // Coordenadas do terceiro ponto
         icon: resizedBusIcon,
         onTap: () {
           _showMarkerInfo(
             context,
-            'Avenida Pref. Isoldackson Cruz de Brito, 1042',
-            'Descrição do ponto 3.',
-            'assets/images/pontos/biaestampa.jpg',
+            'Informações do Ponto 3',
+            'Descrição do ponto 3',
+            'assets/images/pontos/terceira_imagem.jpg',
+            LatLng(-22.872428, -43.774644), // Coordenadas do terceiro ponto
           );
         },
       ),
     );
 
-    markers.add(
-      Marker(
-        markerId: MarkerId('marker4'),
-        position: LatLng(-22.818322264444916, -43.77224338451711),
-        icon: resizedBusIcon,
-        onTap: () {
-          _showMarkerInfo(
-            context,
-            'Avenida Pref. Isoldackson Cruz de Brito, 1042',
-            'Descrição do ponto 4.',
-            'assets/images/pontos/biaestampa.jpg',
-          );
-        },
-      ),
-    );
+    // Adicione outros marcadores conforme necessário
 
     return markers;
   }
 
-  static void _showMarkerInfo(BuildContext context, String markerInfo,
-      String? description, String? imagePath) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (BuildContext context) {
-        return Container(
-          padding: EdgeInsets.all(16.0),
-          margin: EdgeInsets.symmetric(horizontal: 16.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
-            color: Colors.white,
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Informações do Ponto e do Ônibus',
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 15.0),
-                Text(
-                  markerInfo,
-                  style: TextStyle(
-                    fontSize: 16.0,
-                  ),
-                ),
-                if (description != null) SizedBox(height: 8.0),
-                if (description != null) Text('Descrição: $description'),
-                if (imagePath != null) SizedBox(height: 8.0),
-                if (imagePath != null) Image.asset(imagePath),
-                SizedBox(height: 16.0),
-                ExpansionTile(
-                  title: Text('Chegada estimada Ônibus'),
-                  children: [
-                    Text(
-                        'Tempo estimado para a chegada do ônibus: 5 minutos'), // Adicione informações reais aqui
-                  ],
-                ),
-                ExpansionTile(
-                  title: Text('Tempo estimado para o Ponto'),
-                  children: [
-                    Text(
-                        'Tempo estimado para chegar ao ponto: 10 minutos'), // Adicione informações reais aqui
-                  ],
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  static Future<Marker?> findNearestMarker(
-      LatLng userLocation, Set<Marker> markers) async {
+  static void _showMarkerInfo(
+    BuildContext context,
+    String markerInfo,
+    String? description,
+    String? imagePath,
+    LatLng pointCoordinates,
+  ) async {
     try {
-      Position currentPosition = await Geolocator.getCurrentPosition();
-      LatLng currentLatLng =
-          LatLng(currentPosition.latitude, currentPosition.longitude);
+      final LatLng userLocation = await _getUserLocation();
+      final double distance =
+          _calculateDistance(userLocation, pointCoordinates);
 
-      double minDistance = double.infinity;
-      Marker? nearestMarker;
+      double averageWalkingSpeed = 1.4;
+      double estimatedTimeInSeconds = distance / averageWalkingSpeed;
 
-      for (Marker marker in markers) {
-        double distance = await Geolocator.distanceBetween(
-          currentLatLng.latitude,
-          currentLatLng.longitude,
-          marker.position.latitude,
-          marker.position.longitude,
-        );
+      int estimatedMinutes = (estimatedTimeInSeconds / 60).floor();
+      int estimatedSeconds = (estimatedTimeInSeconds % 60).floor();
 
-        if (distance < minDistance) {
-          minDistance = distance;
-          nearestMarker = marker;
-        }
-      }
+      showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            padding: EdgeInsets.all(16.0),
+            margin: EdgeInsets.symmetric(horizontal: 0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+              color: Colors.white,
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Informações do Ponto e do Ônibus',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 15.0),
+                  Text(
+                    markerInfo,
+                    style: TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  if (description != null) SizedBox(height: 8.0),
+                  if (description != null) Text('Descrição: $description'),
+                  if (imagePath != null) SizedBox(height: 8.0),
+                  if (imagePath != null) Image.asset(imagePath),
+                  SizedBox(height: 16.0),
+                  ExpansionTile(
+                    title: Text('Chegada estimada Ônibus'),
+                    children: [
+                      Text(
+                        'Tempo estimado para a chegada do ônibus: 4 min e 4 s.',
+                      ),
+                    ],
+                  ),
+                  ExpansionTile(
+                    title: Text('Tempo estimado para sua chegada no ponto'),
+                    children: [
+                      Text(
+                        'Tempo: $estimatedMinutes min e $estimatedSeconds s.',
+                      ),
+                    ],
 
-      return nearestMarker;
+                    
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
     } catch (e) {
-      print("Error finding nearest marker: $e");
-      return null;
+      print("Error showing marker info: $e");
     }
   }
 
-  static double calculateDistance(LatLng start, LatLng end) {
+  static Future<LatLng> _getUserLocation() async {
+    final Position currentPosition = await Geolocator.getCurrentPosition();
+    return LatLng(currentPosition.latitude, currentPosition.longitude);
+  }
+
+  static double _calculateDistance(LatLng start, LatLng end) {
     double lat1 = start.latitude;
     double lon1 = start.longitude;
     double lat2 = end.latitude;
