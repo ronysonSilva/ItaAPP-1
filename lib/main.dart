@@ -35,7 +35,7 @@ import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 // teste burro
-//
+/// barra barra barra
 // teste mediano
 
 import 'componentes/theme/theme.dart';
