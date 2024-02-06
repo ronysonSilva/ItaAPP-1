@@ -38,7 +38,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 /// barra barra barra
 // teste mediano
 //fiz merda no seu
-//merda
+//merda 23
 
 import 'componentes/theme/theme.dart';
 
