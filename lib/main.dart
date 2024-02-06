@@ -33,7 +33,12 @@ import 'package:flutter_launcher_icons/web/web_template.dart';
 import 'package:flutter_launcher_icons/windows/windows_icon_generator.dart';
 import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+<<<<<<< HEAD
 //oi
+=======
+//teste rony
+//teste rony 2
+>>>>>>> main
 import 'componentes/theme/theme.dart';
 
 void main() async {
