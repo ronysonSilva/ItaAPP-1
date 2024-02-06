@@ -36,6 +36,10 @@ import 'package:responsive_builder/responsive_builder.dart';
 
 // teste burro
 
+// teste mediano
+
+
+
 import 'componentes/theme/theme.dart';
 
 void main() async {
