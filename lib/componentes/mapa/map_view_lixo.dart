@@ -194,7 +194,8 @@ class _MapViewLixoState extends State<MapViewLixo> {
           return false;
         },
         child: Scaffold(
-          endDrawer: GavetaMap(
+          drawer: GavetaMap(
+            
             onLogout: () {
               Navigator.pop(context);
               Navigator.pushNamedAndRemoveUntil(

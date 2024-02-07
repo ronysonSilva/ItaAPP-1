@@ -182,7 +182,7 @@ class _MapViewState extends State<MapView> {
           return false;
         },
         child: Scaffold(
-          endDrawer: GavetaMap(
+          drawer: GavetaMap(
             onLogout: () {
               Navigator.pop(context);
               Navigator.pushNamedAndRemoveUntil(
