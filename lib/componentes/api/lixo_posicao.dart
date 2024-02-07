@@ -8,19 +8,19 @@ import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class CarPositionComponentWithoutMap extends StatefulWidget {
+class LixoPositionComponentWithoutMap extends StatefulWidget {
   final void Function(Set<Marker>) onUpdateMarkers;
 
-  CarPositionComponentWithoutMap(
+  LixoPositionComponentWithoutMap(
       {required this.onUpdateMarkers, required String userAvatar});
 
   @override
-  _CarPositionComponentWithoutMapState createState() =>
-      _CarPositionComponentWithoutMapState();
+  _LixoPositionComponentWithoutMapState createState() =>
+      _LixoPositionComponentWithoutMapState();
 }
 
-class _CarPositionComponentWithoutMapState
-    extends State<CarPositionComponentWithoutMap> {
+class _LixoPositionComponentWithoutMapState
+    extends State<LixoPositionComponentWithoutMap> {
   List<Map<String, dynamic>> positions = [];
   Set<Marker> markers = {};
   late Timer timer;
@@ -48,8 +48,8 @@ class _CarPositionComponentWithoutMapState
   Future<void> fetchData() async {
     try {
       final String apiUrl = 'http://45.170.17.10:9092/api/positions';
-      final String username = 'talmeida21986@gmail.com';
-      final String password = 'T1@go0116';
+      final String username = 'wallace@wallace';
+      final String password = '123123';
 
       final response = await http.get(
         Uri.parse(apiUrl),
@@ -91,7 +91,8 @@ class _CarPositionComponentWithoutMapState
   }
 
   Future<BitmapDescriptor> _getResizedCarIcon() async {
-    final ByteData data = await rootBundle.load('assets/images/bus_red.png');
+    final ByteData data =
+        await rootBundle.load('assets/images/caminhao_lixo_icon.png');
     final Uint8List bytes = data.buffer.asUint8List();
 
     final codec = await instantiateImageCodec(

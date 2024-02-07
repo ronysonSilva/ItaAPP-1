@@ -132,7 +132,7 @@ flutter:
     - assets/images/meio_brasão.png
     - assets/images/FundoAzulApp.jpg
     - assets/images/FundoAzulApp.png
-    
+    - assets/images/icons/trash.png
     - assets/images/app/splash.png
     - assets/images/icons/icon_brasao.png
     - assets/images/icons/trash.png
@@ -154,6 +154,8 @@ flutter:
     - assets/images/icons/defesa_civil_icon.png
     - assets/images/icons/instagram_icon.png
     - assets/images/app/icon-android.png
+    - assets/images/caminhao_lixo_icon.png
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
