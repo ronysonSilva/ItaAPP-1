@@ -14,7 +14,7 @@ import 'package:meu_app/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api/api_tempo.dart';
-import '../api/carPosicao.dart';
+import '../api/lixo_posicao.dart';
 import '../controllers/map_markers.dart';
 import '../estilosMapa/componente/Map_style_manager.dart';
 import '../estilosMapa/map_style_branco.dart';
@@ -548,7 +548,7 @@ class _MapViewLixoState extends State<MapViewLixo> {
                 Positioned(
                   bottom: 16,
                   left: 16,
-                  child: CarPositionComponentWithoutMap(
+                  child: LixoPositionComponentWithoutMap(
                     onUpdateMarkers: (Set<Marker> newMarkers) {
                       setState(() {
                         carPositionMarkers = newMarkers;

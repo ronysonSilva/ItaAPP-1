@@ -1,11 +1,13 @@
 import 'dart:async';
-import 'dart:typed_data';
+import 'dart:convert';
+import 'dart:math';
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'dart:math';
+import 'package:http/http.dart' as http;
 
 class CustomMarker extends Marker {
   final String title;
@@ -21,6 +23,9 @@ class CustomMarker extends Marker {
 }
 
 class MapMarkers {
+  static Set<Marker> markers = {};
+  static Function(Set<Marker>)? onUpdateMarkers;
+
   static Future<BitmapDescriptor> _getResizedBusIcon() async {
     final ByteData data = await rootBundle.load('assets/images/ponto.png');
     final Uint8List bytes = data.buffer.asUint8List();
@@ -39,7 +44,6 @@ class MapMarkers {
   }
 
   static Future<Set<Marker>> getMarkers(BuildContext context) async {
-    final Set<Marker> markers = {};
     final BitmapDescriptor resizedBusIcon = await _getResizedBusIcon();
 
     markers.add(
@@ -75,27 +79,73 @@ class MapMarkers {
         },
       ),
     );
-    markers.add(
-      Marker(
-        markerId: MarkerId('marker3'),
-        position:
-            LatLng(-22.872428, -43.774644), // Coordenadas do terceiro ponto
-        icon: resizedBusIcon,
-        onTap: () {
-          _showMarkerInfo(
-            context,
-            'Informações do Ponto 3',
-            'Descrição do ponto 3',
-            'assets/images/pontos/terceira_imagem.jpg',
-            LatLng(-22.872428, -43.774644), // Coordenadas do terceiro ponto
-          );
-        },
-      ),
-    );
 
-    // Adicione outros marcadores conforme necessário
+    // Adapte conforme necessário para outros marcadores
 
     return markers;
+  }
+
+  static Future<void> fetchData(BuildContext context) async {
+    try {
+      final String apiUrl = 'http://45.170.17.10:9092/api/positions';
+      final String username = 'talmeida21986@gmail.com';
+      final String password = 'T1@go0116';
+
+      final response = await http.get(
+        Uri.parse(apiUrl),
+        headers: <String, String>{
+          'Authorization':
+              'Basic ' + base64Encode(utf8.encode('$username:$password')),
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+        await _updateMarkers(context, data);
+
+        print('Dados da API recebidos com sucesso!');
+      } else {
+        print('Erro ao buscar dados da API: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Erro ao fazer a solicitação HTTP: $e');
+    }
+  }
+
+  static Future<void> _updateMarkers(
+    BuildContext context,
+    List<dynamic> data,
+  ) async {
+    try {
+      markers.clear();
+
+      for (var position in data) {
+        final BitmapDescriptor carIcon = await _getResizedBusIcon();
+        markers.add(
+          Marker(
+            markerId: MarkerId(position['id'].toString()),
+            position: LatLng(position['latitude'], position['longitude']),
+            icon: carIcon,
+            infoWindow: InfoWindow(title: 'Carro ID ${position['id']}'),
+            onTap: () {
+              _showMarkerInfo(
+                context,
+                'Informações do ônibus',
+                'Descrição do ônibus.',
+                'assets/images/bus_icon.png',
+                LatLng(position['latitude'], position['longitude']),
+                arrivalTime: position['attributes']['arrivalTime'],
+                pointTime: position['attributes']['pointTime'],
+              );
+            },
+          ),
+        );
+      }
+
+      onUpdateMarkers?.call(markers);
+    } catch (e) {
+      print("Error updating markers: $e");
+    }
   }
 
   static void _showMarkerInfo(
@@ -103,8 +153,10 @@ class MapMarkers {
     String markerInfo,
     String? description,
     String? imagePath,
-    LatLng pointCoordinates,
-  ) async {
+    LatLng pointCoordinates, {
+    String? arrivalTime,
+    String? pointTime,
+  }) async {
     try {
       final LatLng userLocation = await _getUserLocation();
       final double distance =
@@ -153,7 +205,7 @@ class MapMarkers {
                     title: Text('Chegada estimada Ônibus'),
                     children: [
                       Text(
-                        'Tempo estimado para a chegada do ônibus: 4 min e 4 s.',
+                        'Tempo estimado para a chegada do ônibus: $arrivalTime',
                       ),
                     ],
                   ),
@@ -164,8 +216,6 @@ class MapMarkers {
                         'Tempo: $estimatedMinutes min e $estimatedSeconds s.',
                       ),
                     ],
-
-                    
                   ),
                 ],
               ),
