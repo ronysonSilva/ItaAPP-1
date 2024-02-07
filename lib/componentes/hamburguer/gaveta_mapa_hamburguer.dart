@@ -638,7 +638,14 @@ class _GavetaMapState extends State<GavetaMap> {
                             ),
                           ),
                         ),
-                        Positioned(
+                        /*const Divider(
+                          height: 1200,
+                          thickness: 1,
+                          indent: 0,
+                          endIndent: 0,
+                          color: Colors.black,
+                        ),*/
+                        /*Positioned(
                           // frame230V71 (6:161)
                           left: 4,
                           top: 400,
@@ -675,7 +682,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               ],
                             ),
                           ),
-                        ),
+                        ),*/
                         Positioned(
                           // frame229RDd (6:157)
                           left: 4,
@@ -777,13 +784,6 @@ class _GavetaMapState extends State<GavetaMap> {
                               ],
                             ),
                           ),
-                        ),
-                        const Divider(
-                          height: 900,
-                          thickness: 1,
-                          indent: 0,
-                          endIndent: 0,
-                          color: Colors.black,
                         ),
                         Positioned(
                           // groupo1D (6:169)

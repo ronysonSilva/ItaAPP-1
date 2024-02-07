@@ -67,6 +67,7 @@ dependencies:
   google_fonts: ^6.1.0
   responsive_builder: ^0.4.3
   local_auth: ^2.1.8
+  flutter_svg: ^2.0.9
   #i1ntl: ^0.19.0
   #flutter_bloc: ^7.1.0
   
@@ -138,6 +139,7 @@ flutter:
     - assets/images/icons/trash.png
     - assets/images/icons/caminhao_lixo_icon.png
     - assets/images/icons/chamados_icon.png
+    - assets/images/icons/feed_icon.png
     - assets/images/icons/email.png
     - assets/images/icons/local.png
     - assets/images/icons/change_password_icon.png
