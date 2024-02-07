@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:meu_app/componentes/chamados/chamados.dart';
 import 'package:meu_app/componentes/mapa/map_view_lixo.dart';
 import 'package:meu_app/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -161,6 +162,17 @@ class _MapViewState extends State<MapView> {
     mapStyleManager = MapStyleManager(_controller);
   }
 
+  int _indiceAtual = 0;
+  final List<Widget> _telas = [
+    //MapView("Minha conta"),
+    chamados("chamados"),
+  ];
+  void _onItemTapped(int index) {
+    setState(() {
+      _indiceAtual = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -214,9 +226,10 @@ class _MapViewState extends State<MapView> {
                     }
                   },
                 ),
+
                 Positioned(
-                  top: 70,
-                  left: 20,
+                  top: 30,
+                  right: 20,
                   child: InkWell(
                     onTap: () {
                       Scaffold.of(context).openDrawer();
@@ -242,7 +255,7 @@ class _MapViewState extends State<MapView> {
                   ),
                 ),
 
-//RONY
+                //RONY
 
                 Positioned(
                   // Aqui é onde se desenha e orienta o azul gradiente
@@ -496,7 +509,7 @@ class _MapViewState extends State<MapView> {
                   ),
                 ),
 
-//RONY
+                //RONY
 
                 Positioned(
                   top: 16,
@@ -542,6 +555,20 @@ class _MapViewState extends State<MapView> {
             ),
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Color.fromARGB(255, 0, 55, 104),
+        iconSize: 30,
+        //currentIndex: _selectedIndex,
+        fixedColor: Colors.white,
+        unselectedItemColor: Color.fromARGB(255, 175, 199, 220),
+        //onTap: _navigateBottomBar,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle_outlined), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.feed_outlined), label: ''),
+        ],
       ),
     );
   }

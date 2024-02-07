@@ -177,6 +177,14 @@ class _MapViewLixoState extends State<MapViewLixo> {
     mapStyleManager = MapStyleManager(_controller);
   }
 
+  int _selectedIndex = 0;
+
+  void _navigateBottomBar(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -187,6 +195,7 @@ class _MapViewLixoState extends State<MapViewLixo> {
         },
         child: Scaffold(
           drawer: GavetaMap(
+            
             onLogout: () {
               Navigator.pop(context);
               Navigator.pushNamedAndRemoveUntil(
@@ -231,8 +240,8 @@ class _MapViewLixoState extends State<MapViewLixo> {
                   },
                 ),
                 Positioned(
-                  top: 70,
-                  left: 20,
+                  top: 30,
+                  right: 20,
                   child: InkWell(
                     onTap: () {
                       Scaffold.of(context).openDrawer();
@@ -556,6 +565,21 @@ class _MapViewLixoState extends State<MapViewLixo> {
                 ),
               ],
             ),
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Color.fromARGB(255, 0, 55, 104),
+            iconSize: 30,
+            currentIndex: _selectedIndex,
+            fixedColor: Colors.white,
+            unselectedItemColor: Color.fromARGB(255, 175, 199, 220),
+            onTap: _navigateBottomBar,
+            type: BottomNavigationBarType.fixed,
+            items: [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.account_circle_outlined), label: ''),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.feed_outlined), label: ''),
+            ],
           ),
         ),
       ),

@@ -602,10 +602,10 @@ class _GavetaMapState extends State<GavetaMap> {
                         ),
                         Positioned(
                           // frame228Wyq (6:153)
-                          left: 0,
-                          top: 550,
+                          left: 5,
+                          top: 580,
                           child: Container(
-                            padding: EdgeInsets.fromLTRB(0, 0, 0, 2.5),
+                            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                             width: 56,
                             height: 24,
                             child: Row(
@@ -613,13 +613,13 @@ class _GavetaMapState extends State<GavetaMap> {
                               children: [
                                 Container(
                                   // logoutfill0wght400grad0opsz241 (6:154)
-                                  margin: EdgeInsets.fromLTRB(0, 0, 9, 0),
-                                  width: 18,
-                                  height: 18,
+                                  margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+                                  width: 20,
+                                  height: 20,
                                   child: Image.asset(
                                     'assets/images/icons/exit_icon.png',
-                                    width: 18,
-                                    height: 18,
+                                    width: 20,
+                                    height: 20,
                                   ),
                                 ),
                                 Text(
@@ -638,10 +638,55 @@ class _GavetaMapState extends State<GavetaMap> {
                             ),
                           ),
                         ),
+                        /*const Divider(
+                          height: 1200,
+                          thickness: 1,
+                          indent: 0,
+                          endIndent: 0,
+                          color: Colors.black,
+                        ),*/
+                        /*Positioned(
+                          // frame230V71 (6:161)
+                          left: 4,
+                          top: 400,
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                            width: 150,
+                            height: 24,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  // lockresetfill0wght400grad0opsz (6:162)
+                                  margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+                                  width: 20,
+                                  height: 20,
+                                  child: Image.asset(
+                                    'assets/images/icons/chamados_icon.png',
+                                    width: 20,
+                                    height: 20,
+                                  ),
+                                ),
+                                Text(
+                                  // alterarsenhaUDq (6:164)
+                                  'Meus Chamados',
+                                  textAlign: TextAlign.center,
+                                  style: SafeGoogleFont(
+                                    'DM Sans',
+                                    fontSize: 14.4000453949,
+                                    fontWeight: FontWeight.w500,
+                                    height: 1.3025,
+                                    color: Color(0xffffffff),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),*/
                         Positioned(
                           // frame229RDd (6:157)
-                          left: 0,
-                          top: 450,
+                          left: 4,
+                          top: 500,
                           child: GestureDetector(
                             onTap: () async {
                               await Navigator.of(context).push(
@@ -666,17 +711,17 @@ class _GavetaMapState extends State<GavetaMap> {
                             },
                             child: Container(
                               padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                              width: 322,
+                              width: 500,
                               height: 65,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Color(0xb21e304c)),
-                              ),
+                              //decoration: BoxDecoration(
+                              //border: Border.all(color: Color.fromARGB(177, 0, 98, 255)),
+                              //),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
                                     // accountcirclefill0wght400grad0 (6:158)
-                                    margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+                                    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
                                     width: 20,
                                     height: 20,
                                     child: Image.asset(
@@ -705,7 +750,7 @@ class _GavetaMapState extends State<GavetaMap> {
                         Positioned(
                           // frame230V71 (6:161)
                           left: 0,
-                          top: 400,
+                          top: 460,
                           child: Container(
                             padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                             width: 150,
@@ -715,13 +760,13 @@ class _GavetaMapState extends State<GavetaMap> {
                               children: [
                                 Container(
                                   // lockresetfill0wght400grad0opsz (6:162)
-                                  margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                                  width: 20,
-                                  height: 20,
+                                  margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                  width: 24,
+                                  height: 24,
                                   child: Image.asset(
                                     'assets/images/icons/change_password_icon.png',
-                                    width: 20,
-                                    height: 20,
+                                    width: 24,
+                                    height: 24,
                                   ),
                                 ),
                                 Text(

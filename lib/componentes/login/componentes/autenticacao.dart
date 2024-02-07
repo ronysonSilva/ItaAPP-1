@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 
 class AuthenticationScreen extends StatefulWidget {
@@ -80,7 +77,4 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
       ),
     );
   }
-
-
-  
 }
