@@ -397,7 +397,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     Icon(Icons.notifications_outlined,
                         color: Colors.white), // Icon à esquerda
                     SizedBox(width: 10), // Espaçamento entre o ícone e o texto
-                    Text('Notificações'), // Texto do botão
+                    //Text('Notificações'), // Texto do botão
                   ],
                 ),
               ),
@@ -414,7 +414,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   //_clearUserImage();
                 },
                 style: TextButton.styleFrom(
-                  primary: Colors.white,
+                  primary: Color.fromARGB(255, 255, 104, 104),
                   backgroundColor: Colors.transparent,
                 ),
                 child: Row(

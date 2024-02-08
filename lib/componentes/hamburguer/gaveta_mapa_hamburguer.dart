@@ -540,7 +540,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               children: [
                                 Container(
                                   // tempolimpo23PsH (6:165)
-                                  margin: EdgeInsets.fromLTRB(0, 21, 46, 0),
+                                  margin: EdgeInsets.fromLTRB(0, 21, 10, 0),
                                   child: Text(
                                     'Tempo limpo, 23º',
                                     textAlign: TextAlign.center,
@@ -555,45 +555,49 @@ class _GavetaMapState extends State<GavetaMap> {
                                 ),
                                 Container(
                                   // group301fpo (6:166)
-                                  margin: EdgeInsets.fromLTRB(0, 0, 10, 8),
+                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      Container(
-                                        // ellipse9awm (6:167)
-                                        margin:
-                                            EdgeInsets.fromLTRB(0, 0, 7.6, 0),
-                                        width: 24.7,
-                                        height: 24.7,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                              12.3500003815),
-                                          color: Color(0x4cdcebf3),
+                                      IconButton(
+                                        onPressed: () {
+                                          print('Ícone de Notificações');
+                                        },
+                                        icon: Icon(
+                                          Icons.notifications,
+                                          color: Colors.white,
                                         ),
+                                        iconSize: 20,
+                                        padding: EdgeInsets.all(12),
+                                        splashRadius: 20,
+                                        color: Color(0x4cdcebf3),
                                       ),
-                                      Container(
-                                        // ellipse10thZ (6:168)
-                                        width: 24,
-                                        height: 24,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                          color: Color(0x4cdcebf3),
+                                      IconButton(
+                                        onPressed: () {
+                                          print('Ícone de Configurações');
+                                        },
+                                        icon: Icon(
+                                          Icons.settings,
+                                          color: Colors.white,
                                         ),
+                                        iconSize: 20,
+                                        padding: EdgeInsets.all(12),
+                                        splashRadius: 20,
+                                        color: Color.fromARGB(75, 9, 126, 189),
                                       ),
                                     ],
                                   ),
                                 ),
                                 Container(
                                   // group228Djq (6:150)
-                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 7),
+                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   width: 33,
-                                  height: 33,
+                                  height: 35,
                                   child: Image.asset(
                                     'assets/images/icons/back_icon.png',
                                     width: 33,
-                                    height: 33,
+                                    height: 35,
                                   ),
                                 ),
                               ],
