@@ -155,8 +155,6 @@ class _GavetaMapState extends State<GavetaMap> {
 
   @override
   Widget build(BuildContext context) {
-    double baseWidth = 390;
-
     return Container(
       width: double.infinity,
       child: Container(
@@ -203,7 +201,7 @@ class _GavetaMapState extends State<GavetaMap> {
                           gradient: LinearGradient(
                             begin: Alignment(0.529, -0.912),
                             end: Alignment(0, 1),
-                            colors: <Color>[Color(0x00003768)],
+                            colors: <Color>[Color.fromARGB(255, 255, 255, 255)],
                             stops: <double>[1],
                           ),
                         ),
@@ -821,14 +819,23 @@ class _GavetaMapState extends State<GavetaMap> {
                             ),
                             child: Center(
                               // componentsavatarcirclesMgw (6:171)
-                              child: SizedBox(
-                                width: 40.84,
-                                height: 40.84,
-                                child: Image.asset(
-                                  'assets/images/icons/sun_icon.png',
-                                  width: 40.84,
-                                  height: 40.84,
-                                ),
+                              child: CircleAvatar(
+                                radius: 70,
+                                backgroundImage: _userImage != null
+                                    ? FileImage(_userImage!)
+                                    : null,
+                                child: _userImage == null
+                                    ? Text(
+                                        _generateAvatarText(),
+                                        style: SafeGoogleFont(
+                                          'Inter',
+                                          fontSize: 40,
+                                          fontWeight: FontWeight.w500,
+                                          height: 1,
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                        ),
+                                      )
+                                    : null,
                               ),
                             ),
                           ),
