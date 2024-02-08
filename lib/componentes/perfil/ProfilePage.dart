@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:meu_app/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -160,24 +161,57 @@ class _ProfilePageState extends State<ProfilePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Editar Nome'),
+          backgroundColor:
+              Color.fromARGB(255, 0, 55, 104), // Cor de fundo do AlertDialog
+          title: Text(
+            'Editar Nome',
+            style: SafeGoogleFont(
+              'Inter',
+              fontSize: 15.6911201477,
+              fontWeight: FontWeight.w500,
+              height: 1.2125,
+              color: Color.fromARGB(255, 255, 255, 255),
+            ),
+          ),
           content: TextField(
             controller: _nameController,
-            decoration: InputDecoration(labelText: 'Novo Nome'),
+            decoration: InputDecoration(
+              labelText: 'Novo Nome',
+              labelStyle:
+                  TextStyle(color: Colors.white), // Cor do texto do rótulo
+            ),
           ),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Cancelar'),
+              child: Text(
+                'Cancelar',
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 15.6911201477,
+                  fontWeight: FontWeight.w500,
+                  height: 1.2125,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
+              ),
             ),
             TextButton(
               onPressed: () {
                 _updateUserName();
                 Navigator.pop(context);
               },
-              child: Text('Salvar'),
+              child: Text(
+                'Salvar',
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 15.6911201477,
+                  fontWeight: FontWeight.w500,
+                  height: 1.2125,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
+              ),
             ),
           ],
         );
@@ -243,61 +277,158 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Perfil'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.exit_to_app),
-            onPressed: () async {
-              await widget.onLogout();
-              _clearUserImage();
-            },
+      body: Container(
+        padding: EdgeInsets.fromLTRB(33.06, 0, 0, 36.55),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment(-0.487, -1.117),
+            end: Alignment(0.931, 1.045),
+            colors: <Color>[Color(0xff00427d), Color(0xff003768)],
+            stops: <double>[0, 1],
           ),
-        ],
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(height: 20),
-          GestureDetector(
-            onTap: _showImageOptions,
-            child: CircleAvatar(
-              radius: 70,
-              backgroundImage:
-                  _userImage != null ? FileImage(_userImage!) : null,
-              child: _userImage == null
-                  ? Text(
-                      _generateAvatarText(),
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    )
-                  : null,
-            ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: _showImageOptions,
+                child: CircleAvatar(
+                  radius: 70,
+                  backgroundImage:
+                      _userImage != null ? FileImage(_userImage!) : null,
+                  child: _userImage == null
+                      ? Text(
+                          _generateAvatarText(),
+                          style: SafeGoogleFont(
+                            'Inter',
+                            fontSize: 40,
+                            fontWeight: FontWeight.w500,
+                            height: 1,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          ),
+                        )
+                      : null,
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                _user?.displayName ?? '',
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  height: 1.2125,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                _user?.email ?? '',
+                style: SafeGoogleFont(
+                  'Inter',
+                  fontSize: 15.6911201477,
+                  fontWeight: FontWeight.w500,
+                  height: 1.2125,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
+              ),
+              SizedBox(height: 20),
+              TextButton(
+                onPressed: _editUserName,
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Colors.transparent,
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.edit, color: Colors.white), // Icon à esquerda
+                    SizedBox(width: 10), // Espaçamento entre o ícone e o texto
+                    Text('Alterar Nome'), // Texto do botão
+                  ],
+                ),
+              ),
+              const Divider(
+                thickness: 1,
+                indent: 0,
+                endIndent: 5,
+                color: Colors.black,
+              ),
+              SizedBox(height: 1),
+              TextButton(
+                onPressed: () {
+                  // Ação para o botão de Configurações
+                  // Substitua o código abaixo pela ação desejada
+                  print('Configurações');
+                },
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Colors.transparent,
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.settings_outlined,
+                        color: Colors.white), // Icon à esquerda
+                    SizedBox(width: 10), // Espaçamento entre o ícone e o texto
+                    Text('Configurações'), // Texto do botão
+                  ],
+                ),
+              ),
+              const Divider(
+                thickness: 1,
+                indent: 0,
+                endIndent: 5,
+                color: Colors.black,
+              ),
+              SizedBox(height: 1),
+              TextButton(
+                onPressed: () {
+                  // Ação para o botão de Notificações
+                  // Substitua o código abaixo pela ação desejada
+                  print('Notificações');
+                },
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Colors.transparent,
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.notifications_outlined,
+                        color: Colors.white), // Icon à esquerda
+                    SizedBox(width: 10), // Espaçamento entre o ícone e o texto
+                    Text('Notificações'), // Texto do botão
+                  ],
+                ),
+              ),
+              const Divider(
+                thickness: 1,
+                indent: 0,
+                endIndent: 5,
+                color: Colors.black,
+              ),
+              SizedBox(height: 1),
+              TextButton(
+                onPressed: () async {
+                  await widget.onLogout();
+                  //_clearUserImage();
+                },
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Colors.transparent,
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.exit_to_app_outlined,
+                        color: Colors.white), // Icon à esquerda
+                    SizedBox(width: 10), // Espaçamento entre o ícone e o texto
+                    Text('Sair'), // Texto do botão
+                  ],
+                ),
+              ),
+            ],
           ),
-          SizedBox(height: 20),
-          Text(
-            _user?.displayName ?? '',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 10),
-          Text(
-            _user?.email ?? '',
-            style: TextStyle(
-              fontSize: 16,
-            ),
-          ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: _editUserName,
-            child: Text('Editar Nome'),
-          ),
-        ],
+        ),
       ),
     );
   }

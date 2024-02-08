@@ -838,7 +838,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               width: 86,
                               height: 28,
                               child: Text(
-                                'Olá Iago,',
+                                _user?.displayName ?? '',
                                 textAlign: TextAlign.center,
                                 style: SafeGoogleFont(
                                   'DM Sans',

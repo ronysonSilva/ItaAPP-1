@@ -195,7 +195,6 @@ class _MapViewLixoState extends State<MapViewLixo> {
         },
         child: Scaffold(
           drawer: GavetaMap(
-            
             onLogout: () {
               Navigator.pop(context);
               Navigator.pushNamedAndRemoveUntil(
@@ -566,7 +565,7 @@ class _MapViewLixoState extends State<MapViewLixo> {
               ],
             ),
           ),
-          bottomNavigationBar: BottomNavigationBar(
+          /*bottomNavigationBar: BottomNavigationBar(
             backgroundColor: Color.fromARGB(255, 0, 55, 104),
             iconSize: 30,
             currentIndex: _selectedIndex,
@@ -580,7 +579,7 @@ class _MapViewLixoState extends State<MapViewLixo> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.feed_outlined), label: ''),
             ],
-          ),
+          ),*/
         ),
       ),
     );
