@@ -15,6 +15,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api/api_tempo.dart';
 import '../api/carPosicao.dart';
+import '../chamados/chamados.dart';
 import '../controllers/map_markers.dart';
 import '../estilosMapa/componente/Map_style_manager.dart';
 import '../estilosMapa/map_style_branco.dart';
@@ -556,20 +557,21 @@ class _MapViewState extends State<MapView> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      /*bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Color.fromARGB(255, 0, 55, 104),
         iconSize: 30,
-        //currentIndex: _selectedIndex,
+        currentIndex: _indiceAtual,
         fixedColor: Colors.white,
         unselectedItemColor: Color.fromARGB(255, 175, 199, 220),
-        //onTap: _navigateBottomBar,
+        onTap: _onItemTapped,
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle_outlined), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.feed_outlined), label: ''),
+              icon: Icon(Icons.account_circle_outlined), label: 'Mapa'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.feed_outlined), label: 'Chamados'),
         ],
-      ),
+      ),*/
     );
   }
 

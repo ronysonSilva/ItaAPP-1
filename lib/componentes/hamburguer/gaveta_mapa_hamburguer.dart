@@ -155,8 +155,6 @@ class _GavetaMapState extends State<GavetaMap> {
 
   @override
   Widget build(BuildContext context) {
-    double baseWidth = 390;
-
     return Container(
       width: double.infinity,
       child: Container(
@@ -203,7 +201,7 @@ class _GavetaMapState extends State<GavetaMap> {
                           gradient: LinearGradient(
                             begin: Alignment(0.529, -0.912),
                             end: Alignment(0, 1),
-                            colors: <Color>[Color(0x00003768)],
+                            colors: <Color>[Color.fromARGB(255, 255, 255, 255)],
                             stops: <double>[1],
                           ),
                         ),
@@ -540,7 +538,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               children: [
                                 Container(
                                   // tempolimpo23PsH (6:165)
-                                  margin: EdgeInsets.fromLTRB(0, 21, 46, 0),
+                                  margin: EdgeInsets.fromLTRB(0, 21, 10, 0),
                                   child: Text(
                                     'Tempo limpo, 23º',
                                     textAlign: TextAlign.center,
@@ -555,52 +553,56 @@ class _GavetaMapState extends State<GavetaMap> {
                                 ),
                                 Container(
                                   // group301fpo (6:166)
-                                  margin: EdgeInsets.fromLTRB(0, 0, 10, 8),
+                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      Container(
-                                        // ellipse9awm (6:167)
-                                        margin:
-                                            EdgeInsets.fromLTRB(0, 0, 7.6, 0),
-                                        width: 24.7,
-                                        height: 24.7,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                              12.3500003815),
-                                          color: Color(0x4cdcebf3),
+                                      IconButton(
+                                        onPressed: () {
+                                          print('Ícone de Notificações');
+                                        },
+                                        icon: Icon(
+                                          Icons.notifications,
+                                          color: Colors.white,
                                         ),
+                                        iconSize: 20,
+                                        padding: EdgeInsets.all(12),
+                                        splashRadius: 20,
+                                        color: Color(0x4cdcebf3),
                                       ),
-                                      Container(
-                                        // ellipse10thZ (6:168)
-                                        width: 24,
-                                        height: 24,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                          color: Color(0x4cdcebf3),
+                                      IconButton(
+                                        onPressed: () {
+                                          print('Ícone de Configurações');
+                                        },
+                                        icon: Icon(
+                                          Icons.settings,
+                                          color: Colors.white,
                                         ),
+                                        iconSize: 20,
+                                        padding: EdgeInsets.all(12),
+                                        splashRadius: 20,
+                                        color: Color.fromARGB(75, 9, 126, 189),
                                       ),
                                     ],
                                   ),
                                 ),
                                 Container(
                                   // group228Djq (6:150)
-                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 7),
+                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   width: 33,
-                                  height: 33,
+                                  height: 35,
                                   child: Image.asset(
                                     'assets/images/icons/back_icon.png',
                                     width: 33,
-                                    height: 33,
+                                    height: 35,
                                   ),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                        Positioned(
+                        /*Positioned(
                           // frame228Wyq (6:153)
                           left: 5,
                           top: 580,
@@ -637,7 +639,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               ],
                             ),
                           ),
-                        ),
+                        ),*/
                         /*const Divider(
                           height: 1200,
                           thickness: 1,
@@ -817,14 +819,23 @@ class _GavetaMapState extends State<GavetaMap> {
                             ),
                             child: Center(
                               // componentsavatarcirclesMgw (6:171)
-                              child: SizedBox(
-                                width: 40.84,
-                                height: 40.84,
-                                child: Image.asset(
-                                  'assets/images/icons/sun_icon.png',
-                                  width: 40.84,
-                                  height: 40.84,
-                                ),
+                              child: CircleAvatar(
+                                radius: 70,
+                                backgroundImage: _userImage != null
+                                    ? FileImage(_userImage!)
+                                    : null,
+                                child: _userImage == null
+                                    ? Text(
+                                        _generateAvatarText(),
+                                        style: SafeGoogleFont(
+                                          'Inter',
+                                          fontSize: 40,
+                                          fontWeight: FontWeight.w500,
+                                          height: 1,
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                        ),
+                                      )
+                                    : null,
                               ),
                             ),
                           ),
@@ -838,7 +849,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               width: 86,
                               height: 28,
                               child: Text(
-                                'Olá Iago,',
+                                _user?.displayName ?? '',
                                 textAlign: TextAlign.center,
                                 style: SafeGoogleFont(
                                   'DM Sans',
@@ -876,7 +887,7 @@ class _GavetaMapState extends State<GavetaMap> {
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Container(
+                                /*Container(
                                   // autogroupphuv3TH (CFRC74DyYyxXjDCR24pHuV)
                                   margin: EdgeInsets.fromLTRB(45, 0, 0, 16.21),
                                   height: 119.79,
@@ -1169,7 +1180,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                       ],
                                     ),
                                   ),
-                                ),
+                                ),*/
 
                                 Container(
                                     // Your existing code for the second Container
@@ -1183,7 +1194,7 @@ class _GavetaMapState extends State<GavetaMap> {
                           ),
                         ),
 
-                        Container(
+                        /*Container(
                           // container
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                           width: 418,
@@ -1205,7 +1216,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               ),
                             ),
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
