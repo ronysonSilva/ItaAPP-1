@@ -876,7 +876,7 @@ class _GavetaMapState extends State<GavetaMap> {
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Container(
+                                /*Container(
                                   // autogroupphuv3TH (CFRC74DyYyxXjDCR24pHuV)
                                   margin: EdgeInsets.fromLTRB(45, 0, 0, 16.21),
                                   height: 119.79,
@@ -1169,7 +1169,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                       ],
                                     ),
                                   ),
-                                ),
+                                ),*/
 
                                 Container(
                                     // Your existing code for the second Container
@@ -1183,7 +1183,7 @@ class _GavetaMapState extends State<GavetaMap> {
                           ),
                         ),
 
-                        Container(
+                        /*Container(
                           // container
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                           width: 418,
@@ -1205,7 +1205,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               ),
                             ),
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
