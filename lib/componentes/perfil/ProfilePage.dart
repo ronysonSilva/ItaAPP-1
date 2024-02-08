@@ -349,65 +349,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   ],
                 ),
               ),
-              const Divider(
+              /*const Divider(
                 thickness: 1,
                 indent: 0,
                 endIndent: 5,
                 color: Colors.black,
-              ),
-              SizedBox(height: 1),
-              TextButton(
-                onPressed: () {
-                  // Ação para o botão de Configurações
-                  // Substitua o código abaixo pela ação desejada
-                  print('Configurações');
-                },
-                style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  backgroundColor: Colors.transparent,
-                ),
-                child: Row(
-                  children: [
-                    Icon(Icons.settings_outlined,
-                        color: Colors.white), // Icon à esquerda
-                    SizedBox(width: 10), // Espaçamento entre o ícone e o texto
-                    Text('Configurações'), // Texto do botão
-                  ],
-                ),
-              ),
-              const Divider(
-                thickness: 1,
-                indent: 0,
-                endIndent: 5,
-                color: Colors.black,
-              ),
-              SizedBox(height: 1),
-              TextButton(
-                onPressed: () {
-                  // Ação para o botão de Notificações
-                  // Substitua o código abaixo pela ação desejada
-                  print('Notificações');
-                },
-                style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  backgroundColor: Colors.transparent,
-                ),
-                child: Row(
-                  children: [
-                    Icon(Icons.notifications_outlined,
-                        color: Colors.white), // Icon à esquerda
-                    SizedBox(width: 10), // Espaçamento entre o ícone e o texto
-                    //Text('Notificações'), // Texto do botão
-                  ],
-                ),
-              ),
-              const Divider(
-                thickness: 1,
-                indent: 0,
-                endIndent: 5,
-                color: Colors.black,
-              ),
-              SizedBox(height: 1),
+              ),*/
+              SizedBox(height: 200),
               TextButton(
                 onPressed: () async {
                   await widget.onLogout();

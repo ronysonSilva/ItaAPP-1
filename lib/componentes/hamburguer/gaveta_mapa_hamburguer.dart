@@ -604,7 +604,7 @@ class _GavetaMapState extends State<GavetaMap> {
                             ),
                           ),
                         ),
-                        Positioned(
+                        /*Positioned(
                           // frame228Wyq (6:153)
                           left: 5,
                           top: 580,
@@ -641,7 +641,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               ],
                             ),
                           ),
-                        ),
+                        ),*/
                         /*const Divider(
                           height: 1200,
                           thickness: 1,
