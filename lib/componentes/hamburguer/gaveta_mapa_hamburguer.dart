@@ -739,7 +739,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                         'email.dinamico@example.com',
                                     userImageURL:
                                         _user?.photoURL ?? 'URL da imagem',
-                                    profile: null,
+                                    profile: null, userImageUrl: '',
                                   ),
                                 ),
                               );

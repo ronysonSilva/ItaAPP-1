@@ -14,7 +14,7 @@ import 'package:meu_app/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api/api_tempo.dart';
-import '../api/carPosicao.dart';
+import '../api/lixo_posicao.dart';
 import '../controllers/map_markers.dart';
 import '../estilosMapa/componente/Map_style_manager.dart';
 import '../estilosMapa/map_style_branco.dart';
@@ -85,11 +85,11 @@ class _MapViewLixoState extends State<MapViewLixo> {
       }
     });
 
-    MapMarkers.getMarkers(context).then((result) {
+    /*MapMarkers.getMarkers(context).then((result) {
       setState(() {
         markers = result;
       });
-    });
+    });*/
 
     centerOnBusTimer = Timer.periodic(Duration(minutes: 1), (Timer timer) {
       _centerOnBus();
@@ -547,7 +547,7 @@ class _MapViewLixoState extends State<MapViewLixo> {
                 Positioned(
                   bottom: 16,
                   left: 16,
-                  child: CarPositionComponentWithoutMap(
+                  child: LixoPositionComponentWithoutMap(
                     onUpdateMarkers: (Set<Marker> newMarkers) {
                       setState(() {
                         carPositionMarkers = newMarkers;
@@ -588,30 +588,60 @@ class _MapViewLixoState extends State<MapViewLixo> {
   void _updateBusMarker(LatLng busLocation) async {
     this.busLocation = busLocation;
 
-    final BitmapDescriptor busIcon =
-        await _getResizedBusIconWithInitial(_generateBusAvatar());
+    // Verifica se o usuário tem uma imagem de perfil
+    if (_userImage != null) {
+      // Obtém um ícone de ônibus com a imagem do perfil do usuário
+      final BitmapDescriptor busIcon = await _getResizedBusIcon(_userImage!);
 
-    setState(() {
-      markers.removeWhere((marker) => marker.markerId.value == 'busLocation');
-      markers.add(
-        Marker(
-          markerId: MarkerId('busLocation'),
-          position: busLocation,
-          icon: busIcon,
-          anchor: Offset(0.5, 0.5),
-        ),
-      );
-    });
-
-    if (followUser) {
-      googleMapController.animateCamera(
-        CameraUpdate.newCameraPosition(
-          CameraPosition(
-            target: busLocation,
-            bearing: currentHeading,
+      setState(() {
+        markers.removeWhere((marker) => marker.markerId.value == 'busLocation');
+        markers.add(
+          Marker(
+            markerId: MarkerId('busLocation'),
+            position: busLocation,
+            icon: busIcon,
+            anchor: Offset(0.5, 0.5),
           ),
-        ),
-      );
+        );
+      });
+
+      if (followUser) {
+        googleMapController.animateCamera(
+          CameraUpdate.newCameraPosition(
+            CameraPosition(
+              target: busLocation,
+              bearing: currentHeading,
+            ),
+          ),
+        );
+      }
+    } else {
+      // Se o usuário não tiver uma imagem de perfil, utiliza um ícone padrão
+      final BitmapDescriptor defaultBusIcon =
+          await _getResizedBusIconWithInitial(_generateBusAvatar());
+
+      setState(() {
+        markers.removeWhere((marker) => marker.markerId.value == 'busLocation');
+        markers.add(
+          Marker(
+            markerId: MarkerId('busLocation'),
+            position: busLocation,
+            icon: defaultBusIcon,
+            anchor: Offset(0.5, 0.5),
+          ),
+        );
+      });
+
+      if (followUser) {
+        googleMapController.animateCamera(
+          CameraUpdate.newCameraPosition(
+            CameraPosition(
+              target: busLocation,
+              bearing: currentHeading,
+            ),
+          ),
+        );
+      }
     }
   }
 
@@ -724,6 +754,7 @@ class _MapViewLixoState extends State<MapViewLixo> {
           userName: _user?.displayName ?? 'Nome Dinâmico',
           userEmail: _user?.email ?? 'email.dinamico@example.com',
           userImageURL: _user?.photoURL ?? 'URL da imagem', profile: null,
+          userImageUrl: '',
         ),
       ),
     );

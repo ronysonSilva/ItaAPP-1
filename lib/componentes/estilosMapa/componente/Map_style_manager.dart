@@ -25,7 +25,7 @@ class MapStyleManager {
   }
 
   void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (Timer t) {
+    _timer = Timer.periodic(Duration(seconds: 3), (Timer t) {
       _updateMapStyle();
     });
   }
