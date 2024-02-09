@@ -229,16 +229,21 @@ class _MapViewState extends State<MapView> {
                 ),
 
                 Positioned(
+                  
                   top: 30,
                   right: 20,
+                  
                   child: InkWell(
                     onTap: () {
                       Scaffold.of(context).openDrawer();
                     },
+                    
                     child: Hero(
                       tag: 'profile_image',
+                      
                       child: CircleAvatar(
                         radius: 20,
+                        
                         backgroundImage:
                             _userImage != null ? FileImage(_userImage!) : null,
                         child: _userImage == null
@@ -252,7 +257,9 @@ class _MapViewState extends State<MapView> {
                               )
                             : null,
                       ),
+                      
                     ),
+                    
                   ),
                 ),
 

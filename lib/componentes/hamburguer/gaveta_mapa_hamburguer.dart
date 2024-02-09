@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 import '../login/servicos/autenticacao_servico.dart';
@@ -8,6 +9,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:geolocator/geolocator.dart';
 import '../controllers/map_markers.dart';
+import '../api/api_tempo.dart';
+import 'package:http/http.dart' as http;
 import '../mapa/map_view.dart';
 import '../mapa/map_view_lixo.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -48,6 +51,8 @@ class _GavetaMapState extends State<GavetaMap> {
     super.initState();
     _fetchUser();
     _loadUserImage();
+    super.initState();
+    fetchWeatherData();
   }
 
   Future<void> _fetchUser() async {
@@ -55,6 +60,32 @@ class _GavetaMapState extends State<GavetaMap> {
     setState(() {
       _user = user;
     });
+  }
+
+  Map<String, dynamic> weatherData = {};
+  Future<void> fetchWeatherData() async {
+    try {
+      final response =
+          await http.get(Uri.parse('http://45.170.17.10:5000/clima'));
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = json.decode(response.body);
+
+        setState(() {
+          weatherData = responseData;
+        });
+      } else {
+        print('API request failed with status ${response.statusCode}');
+        setState(() {
+          weatherData = {'error': 'Falha ao carregar dados da API'};
+        });
+      }
+    } catch (e) {
+      print('Error fetching data: $e');
+      setState(() {
+        weatherData = {'error': 'Falha ao carregar dados da API'};
+      });
+    }
   }
 
   Future<void> _loadUserImage() async {
@@ -537,17 +568,20 @@ class _GavetaMapState extends State<GavetaMap> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  // tempolimpo23PsH (6:165)
                                   margin: EdgeInsets.fromLTRB(0, 21, 10, 0),
-                                  child: Text(
-                                    'Tempo limpo, 23º',
-                                    textAlign: TextAlign.center,
-                                    style: SafeGoogleFont(
-                                      'DM Sans',
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                      height: 1.30,
-                                      color: Color(0xffdceaf3),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      // Defina a cor de fundo do container que irá envolver o Text
+                                      color: Colors
+                                          .transparent, // Altere para a cor desejada
+                                    ),
+                                    child: Text(
+                                      'Temperatura: ${weatherData['temperatura']}°C',
+                                      style: TextStyle(
+                                        // Defina a cor do texto
+                                        color: Colors
+                                            .white, // Altere para a cor desejada
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -1292,13 +1326,13 @@ class _GavetaMapState extends State<GavetaMap> {
                     ),
                     child: Center(
                       child: Text(
-                        '27º',
+                        '${weatherData['temp_max']}°C',
                         textAlign: TextAlign.center,
                         style: SafeGoogleFont(
                           'Inter',
-                          fontSize: 15.6911201477,
+                          fontSize: 15,
                           fontWeight: FontWeight.w700,
-                          height: 1.2125,
+                          height: 1,
                           color: Color(0xff1b5a98),
                         ),
                       ),
@@ -1314,13 +1348,13 @@ class _GavetaMapState extends State<GavetaMap> {
                       width: 27,
                       height: 20,
                       child: Text(
-                        '23º',
+                        '${weatherData['temp_min']}°C',
                         textAlign: TextAlign.center,
                         style: SafeGoogleFont(
                           'Inter',
-                          fontSize: 15.6911201477,
-                          fontWeight: FontWeight.w500,
-                          height: 1.2125,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                          height: 1,
                           color: Color(0xff1b5a98),
                         ),
                       ),
@@ -1341,7 +1375,7 @@ class _GavetaMapState extends State<GavetaMap> {
                         style: SafeGoogleFont(
                           'Inter',
                           fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w700,
                           height: 1.2125,
                           color: Color(0xff1b5a98),
                         ),
@@ -1362,7 +1396,7 @@ class _GavetaMapState extends State<GavetaMap> {
                         style: SafeGoogleFont(
                           'Inter',
                           fontSize: 13,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w700,
                           height: 1.2125,
                           color: Color(0xff174976),
                         ),
@@ -1390,7 +1424,7 @@ class _GavetaMapState extends State<GavetaMap> {
                 ),
                 Positioned(
                   // group3002UB (6:210)
-                  left: 140,
+                  left: 135,
                   top: 137,
                   child: Container(
                     width: 400,
@@ -1411,13 +1445,50 @@ class _GavetaMapState extends State<GavetaMap> {
                         ),
                         Text(
                           // 3u5 (6:211)
-                          '28%',
+                          '${weatherData['umidade']}%',
                           textAlign: TextAlign.center,
                           style: SafeGoogleFont(
                             'Inter',
-                            fontSize: 13.9664154053,
-                            fontWeight: FontWeight.w500,
-                            height: 1.2125,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w700,
+                            height: 1,
+                            color: Color(0xff86a1b9),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Positioned(
+                  // group3002UB (6:210)
+                  left: 190,
+                  top: 137,
+                  child: Container(
+                    width: 400,
+                    height: 17,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          // ellipse89Yo (6:212)
+                          margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                          width: 10,
+                          height: 90,
+                          child: Image.asset(
+                            'assets/images/icons/gota_icon.png',
+                            width: 6.18,
+                            height: 9.88,
+                          ),
+                        ),
+                        Text(
+                          // 3u5 (6:211)
+                          '${weatherData['wind_speed']} m/s',
+                          textAlign: TextAlign.center,
+                          style: SafeGoogleFont(
+                            'Inter',
+                            fontSize: 10,
+                            fontWeight: FontWeight.w700,
+                            height: 1,
                             color: Color(0xff86a1b9),
                           ),
                         ),
