@@ -20,7 +20,7 @@ class ProfilePage extends StatefulWidget {
     required this.userName,
     required this.userEmail,
     required this.userImageURL,
-    required profile,
+    required profile, File? userImage, required String userImageUrl,
   });
 
   get userImage => null;
