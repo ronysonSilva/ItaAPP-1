@@ -211,11 +211,11 @@ class _GavetaMapState extends State<GavetaMap> {
                     child: SizedBox(
                       width: 612,
                       height: 796,
-                      child: Image.asset(
-                        'assets/page-1/images/group-13-sfR.png',
-                        width: 612,
-                        height: 796,
-                      ),
+                      //child: Image.asset(
+                      //'assets/page-1/images/group-13-sfR.png',
+                      // width: 612,
+                      //height: 796,
+                      //),
                     ),
                   ),
                 ),
@@ -229,13 +229,13 @@ class _GavetaMapState extends State<GavetaMap> {
                       height: 127,
                       child: Container(
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment(0.529, -0.912),
-                            end: Alignment(0, 1),
-                            colors: <Color>[Color.fromARGB(255, 255, 255, 255)],
-                            stops: <double>[1],
-                          ),
-                        ),
+                            //gradient: LinearGradient(
+                            //begin: Alignment(0.529, -0.912),
+                            //end: Alignment(0, 1),
+                            //colors: <Color>[Color.fromARGB(255, 255, 255, 255)],
+                            //  stops: <double>[1],
+                            //),
+                            ),
                       ),
                     ),
                   ),
@@ -248,11 +248,11 @@ class _GavetaMapState extends State<GavetaMap> {
                     child: SizedBox(
                       width: 159,
                       height: 386,
-                      child: Image.asset(
-                        'assets/page-1/images/group-23.png',
-                        width: 159,
-                        height: 386,
-                      ),
+                      //child: Image.asset(
+                      //'assets/page-1/images/group-23.png',
+                      //width: 159,
+                      //height: 386,
+                      //),
                     ),
                   ),
                 ),
@@ -344,16 +344,16 @@ class _GavetaMapState extends State<GavetaMap> {
                           width: 100,
                           height: 100,
                           decoration: BoxDecoration(
-                            color: Color(0xfff6f7fa),
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x66153a5b),
-                                offset: Offset(0, 4),
-                                blurRadius: 0,
+                              //  color: Color(0xfff6f7fa),
+                              //borderRadius: BorderRadius.circular(10),
+                              //boxShadow: [
+                              // BoxShadow(
+                              // color: Color(0x66153a5b),
+                              //offset: Offset(0, 4),
+                              //blurRadius: 0,
+                              //),
+                              //],
                               ),
-                            ],
-                          ),
                           child: Container(
                             // group188Yj (6:134)
                             width: double.infinity,
@@ -366,11 +366,11 @@ class _GavetaMapState extends State<GavetaMap> {
                                   margin: EdgeInsets.fromLTRB(0, 0, 0, 7.54),
                                   width: 38,
                                   height: 39,
-                                  child: Image.asset(
-                                    'assets/page-1/images/objects.png',
-                                    width: 38,
-                                    height: 39,
-                                  ),
+                                  //child: Image.asset(
+                                  //'assets/page-1/images/objects.png',
+                                  // width: 38,
+                                  //height: 39,
+                                  //),
                                 ),
                                 Text(
                                   // coletadelixoxnf (6:135)
@@ -398,16 +398,16 @@ class _GavetaMapState extends State<GavetaMap> {
                           width: 100,
                           height: 100,
                           decoration: BoxDecoration(
-                            color: Color(0xffffffff),
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x66153a5b),
-                                offset: Offset(0, 4),
-                                blurRadius: 0,
+                              //color: Color(0xffffffff),
+                              //borderRadius: BorderRadius.circular(10),
+                              //boxShadow: [
+                              //BoxShadow(
+                              // color: Color(0x66153a5b),
+                              // offset: Offset(0, 4),
+                              //blurRadius: 0,
+                              //),
+                              //],
                               ),
-                            ],
-                          ),
                           child: Container(
                             // group19f4o (6:127)
                             width: double.infinity,
@@ -420,11 +420,11 @@ class _GavetaMapState extends State<GavetaMap> {
                                   margin: EdgeInsets.fromLTRB(2, 0, 0, 2.64),
                                   width: 45,
                                   height: 45,
-                                  child: Image.asset(
-                                    'assets/page-1/images/group-17-QC3.png',
-                                    width: 45,
-                                    height: 45,
-                                  ),
+                                  //child: Image.asset(
+                                  //'assets/page-1/images/group-17-QC3.png',
+                                  //width: 45,
+                                  //height: 45,
+                                  //),
                                 ),
                                 Text(
                                   // nibusgrtisuE3 (6:128)
@@ -456,11 +456,11 @@ class _GavetaMapState extends State<GavetaMap> {
                                 margin: EdgeInsets.fromLTRB(0, 0, 0, 12),
                                 width: 34,
                                 height: 34,
-                                child: Image.asset(
-                                  'assets/page-1/images/expandlessfill0wght300grad0opsz24-1.png',
-                                  width: 34,
-                                  height: 34,
-                                ),
+                                //child: Image.asset(
+                                //'assets/page-1/images/expandlessfill0wght300grad0opsz24-1.png',
+                                //width: 34,
+                                //height: 34,
+                                //),
                               ),
                               Container(
                                 // group11De3 (6:118)
@@ -887,7 +887,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                 textAlign: TextAlign.center,
                                 style: SafeGoogleFont(
                                   'DM Sans',
-                                  fontSize: 21.4689273834,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.w500,
                                   height: 1.3025,
                                   color: Color(0xffffffff),
@@ -1331,7 +1331,7 @@ class _GavetaMapState extends State<GavetaMap> {
                         style: SafeGoogleFont(
                           'Inter',
                           fontSize: 15,
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w500,
                           height: 1,
                           color: Color(0xff1b5a98),
                         ),
@@ -1341,19 +1341,23 @@ class _GavetaMapState extends State<GavetaMap> {
                 ),
                 Positioned(
                   // 51D (6:206)
-                  left: 312,
-                  top: 190,
-                  child: Align(
-                    child: SizedBox(
-                      width: 27,
-                      height: 20,
+                  left: 301,
+                  top: 185,
+                  child: Container(
+                    width: 46,
+                    height: 28,
+                    decoration: BoxDecoration(
+                      color: Color(0xffb3c9de),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Center(
                       child: Text(
                         '${weatherData['temp_min']}°C',
                         textAlign: TextAlign.center,
                         style: SafeGoogleFont(
                           'Inter',
                           fontSize: 15,
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w500,
                           height: 1,
                           color: Color(0xff1b5a98),
                         ),
@@ -1424,7 +1428,7 @@ class _GavetaMapState extends State<GavetaMap> {
                 ),
                 Positioned(
                   // group3002UB (6:210)
-                  left: 135,
+                  left: 125,
                   top: 137,
                   child: Container(
                     width: 400,
@@ -1462,34 +1466,35 @@ class _GavetaMapState extends State<GavetaMap> {
                 Positioned(
                   // group3002UB (6:210)
                   left: 190,
-                  top: 137,
+                  top: 133,
                   child: Container(
                     width: 400,
-                    height: 17,
+                    height: 25,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           // ellipse89Yo (6:212)
-                          margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                          width: 10,
+                          margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          width: 12,
                           height: 90,
-                          child: Image.asset(
-                            'assets/images/icons/gota_icon.png',
-                            width: 6.18,
-                            height: 9.88,
-                          ),
+                          child: Icon(Icons.air, color: Color(0xff86a1b9)),
                         ),
-                        Text(
-                          // 3u5 (6:211)
-                          '${weatherData['wind_speed']} m/s',
-                          textAlign: TextAlign.center,
-                          style: SafeGoogleFont(
-                            'Inter',
-                            fontSize: 10,
-                            fontWeight: FontWeight.w700,
-                            height: 1,
-                            color: Color(0xff86a1b9),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: 0.0,
+                              left:
+                                  10.0), // Espaçamento interno para reposicionar o texto
+                          child: Text(
+                            // 3u5 (6:211)
+                            '  ${weatherData['wind_speed']} m/s',
+                            style: SafeGoogleFont(
+                              'Inter',
+                              fontSize: 10,
+                              fontWeight: FontWeight.w700,
+                              height: 1,
+                              color: Color(0xff86a1b9),
+                            ),
                           ),
                         ),
                       ],

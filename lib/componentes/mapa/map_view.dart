@@ -229,21 +229,16 @@ class _MapViewState extends State<MapView> {
                 ),
 
                 Positioned(
-                  
                   top: 30,
                   right: 20,
-                  
                   child: InkWell(
                     onTap: () {
                       Scaffold.of(context).openDrawer();
                     },
-                    
                     child: Hero(
                       tag: 'profile_image',
-                      
                       child: CircleAvatar(
                         radius: 20,
-                        
                         backgroundImage:
                             _userImage != null ? FileImage(_userImage!) : null,
                         child: _userImage == null
@@ -257,9 +252,7 @@ class _MapViewState extends State<MapView> {
                               )
                             : null,
                       ),
-                      
                     ),
-                    
                   ),
                 ),
 
@@ -564,7 +557,7 @@ class _MapViewState extends State<MapView> {
           ),
         ),
       ),
-      /*bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Color.fromARGB(255, 0, 55, 104),
         iconSize: 30,
         currentIndex: _indiceAtual,
@@ -578,7 +571,7 @@ class _MapViewState extends State<MapView> {
           BottomNavigationBarItem(
               icon: Icon(Icons.feed_outlined), label: 'Chamados'),
         ],
-      ),*/
+      ),
     );
   }
 

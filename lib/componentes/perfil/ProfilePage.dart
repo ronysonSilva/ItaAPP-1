@@ -313,17 +313,18 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               SizedBox(height: 20),
-              Text(
-                _user?.displayName ?? '',
-                style: SafeGoogleFont(
+              Text('Detalhes do Perfil'
+                  /*_user?.displayName ?? '',
+                style: TextStyle(SafeGoogleFont(
                   'Inter',
                   fontSize: 20,
                   fontWeight: FontWeight.w500,
                   height: 1.2125,
                   color: Color.fromARGB(255, 255, 255, 255),
-                ),
-              ),
-              SizedBox(height: 10),
+                  ),
+                ),*/
+                  ),
+              /*SizedBox(height: 10),
               Text(
                 _user?.email ?? '',
                 style: SafeGoogleFont(
@@ -333,8 +334,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   height: 1.2125,
                   color: Color.fromARGB(255, 255, 255, 255),
                 ),
-              ),
-              SizedBox(height: 20),
+              ),*/
+              SizedBox(height: 30),
               TextButton(
                 onPressed: _editUserName,
                 style: TextButton.styleFrom(
@@ -345,17 +346,79 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     Icon(Icons.edit, color: Colors.white), // Icon à esquerda
                     SizedBox(width: 10), // Espaçamento entre o ícone e o texto
-                    Text('Alterar Nome'), // Texto do botão
+                    Text(
+                      _user?.displayName ?? '',
+                      style: SafeGoogleFont(
+                        'Inter',
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        height: 1.2125,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
+                    ), // Texto do botão
                   ],
                 ),
               ),
-              /*const Divider(
+              const Divider(
                 thickness: 1,
                 indent: 0,
                 endIndent: 5,
                 color: Colors.black,
-              ),*/
-              SizedBox(height: 200),
+              ),
+              SizedBox(height: 1),
+              TextButton(
+                onPressed: _editUserName,
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Colors.transparent,
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.mail_outlined,
+                        color: Colors.white), // Icon à esquerda
+                    SizedBox(width: 10), // Espaçamento entre o ícone e o texto
+                    Text(
+                      _user?.email ?? '',
+                      style: SafeGoogleFont(
+                        'Inter',
+                        fontSize: 15.6911201477,
+                        fontWeight: FontWeight.w500,
+                        height: 1.2125,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
+                    ), // Texto do botão
+                  ],
+                ),
+              ),
+              const Divider(
+                thickness: 1,
+                indent: 0,
+                endIndent: 5,
+                color: Colors.black,
+              ),
+              SizedBox(height: 1),
+              TextButton(
+                onPressed: _editUserName,
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Colors.transparent,
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.lock_outlined,
+                        color: Colors.white), // Icon à esquerda
+                    SizedBox(width: 10), // Espaçamento entre o ícone e o texto
+                    Text('Alterar Senha'), // Texto do botão
+                  ],
+                ),
+              ),
+              const Divider(
+                thickness: 1,
+                indent: 0,
+                endIndent: 5,
+                color: Colors.black,
+              ),
+              SizedBox(height: 100),
               TextButton(
                 onPressed: () async {
                   await widget.onLogout();
