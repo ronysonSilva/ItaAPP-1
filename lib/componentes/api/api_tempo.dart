@@ -53,11 +53,11 @@ class _ApitempoState extends State<Apitempo> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Temperatura: ${weatherData['temperatura']}°C'),
-              Text('Umidade: ${weatherData['umidade']}%'),
-              Text('Temperatura Máxima: ${weatherData['temp_max']}°C'),
-              Text('Temperatura Mínima: ${weatherData['temp_min']}°C'),
-              Text('Velocidade do Vento: ${weatherData['wind_speed']} m/s'),
+              //Text('Tempo limpo, ${weatherData['temperatura']}°C'),
+              //Text('Umidade: ${weatherData['umidade']}%'),
+              //Text('Temperatura Máxima: ${weatherData['temp_max']}°C'),
+              //Text('Temperatura Mínima: ${weatherData['temp_min']}°C'),
+              //Text('Velocidade do Vento: ${weatherData['wind_speed']} m/s'),
               // Add other widgets as needed for additional data
             ],
           ),
