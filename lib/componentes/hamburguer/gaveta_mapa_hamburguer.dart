@@ -492,7 +492,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                       Container(
                                         // sunnysnowingfill0wght300grad0o (6:121)
                                         margin:
-                                            EdgeInsets.fromLTRB(0, 0, 0, 9.94),
+                                            const EdgeInsets.fromLTRB(0, 0, 0, 9.94),
                                         width: 34,
                                         height: 34,
                                         child: Image.asset(
@@ -510,7 +510,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                           fontSize: 9.5,
                                           fontWeight: FontWeight.w500,
                                           height: 1.30,
-                                          color: Color(0xfc003768),
+                                          color: const Color(0xfc003768),
                                         ),
                                       ),
                                     ],
@@ -539,7 +539,7 @@ class _GavetaMapState extends State<GavetaMap> {
                           width: 390,
                           height: 844,
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Color(0xe5003768),
                             ),
                           ),
