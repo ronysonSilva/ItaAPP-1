@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:meu_app/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../hamburguer/mudar_senha.dart';
+
 class ProfilePage extends StatefulWidget {
   final Function() onLogout;
   final void Function(User? user, File? userImage) onUpdate;
@@ -398,7 +400,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               SizedBox(height: 1),
               TextButton(
-                onPressed: _editUserName,
+                onPressed: () => _esqueceuSenha(context),
                 style: TextButton.styleFrom(
                   primary: Colors.white,
                   backgroundColor: Colors.transparent,
@@ -442,5 +444,19 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
     );
+  }
+  void _esqueceuSenha(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ForgetPasswordPage()),
+    ).then((result) {
+      // Adicione qualquer lógica desejada após a conclusão da redefinição de senha
+      if (result == "reset_success") {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+              content: Text("Um e-mail de redefinição de senha foi enviado.")),
+        );
+      }
+    });
   }
 }
