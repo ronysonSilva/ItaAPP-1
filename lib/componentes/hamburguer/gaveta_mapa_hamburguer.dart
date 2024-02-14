@@ -863,7 +863,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                         _generateAvatarText(),
                                         style: SafeGoogleFont(
                                           'Inter',
-                                          fontSize: 40,
+                                          fontSize: 25,
                                           fontWeight: FontWeight.w500,
                                           height: 1,
                                           color: const Color.fromARGB(255, 0, 0, 0),
