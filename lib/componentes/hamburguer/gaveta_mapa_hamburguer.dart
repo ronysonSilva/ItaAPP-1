@@ -157,21 +157,21 @@ class _GavetaMapState extends State<GavetaMap> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Escolher foto"),
+          title: const Text("Escolher foto"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                leading: Icon(Icons.photo_library),
-                title: Text("Escolher da galeria"),
+                leading: const Icon(Icons.photo_library),
+                title: const Text("Escolher da galeria"),
                 onTap: () {
                   Navigator.pop(context);
                   _pickImage();
                 },
               ),
               ListTile(
-                leading: Icon(Icons.photo_camera),
-                title: Text("Tirar uma foto"),
+                leading: const Icon(Icons.photo_camera),
+                title: const Text("Tirar uma foto"),
                 onTap: () {
                   Navigator.pop(context);
                   _takePhoto();
@@ -192,7 +192,7 @@ class _GavetaMapState extends State<GavetaMap> {
         // menuaberto9b1 (6:2)
         width: double.infinity,
         height: 844,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xffdfe9ef),
         ),
         child: ClipRect(
@@ -203,7 +203,7 @@ class _GavetaMapState extends State<GavetaMap> {
             ),
             child: Stack(
               children: [
-                Positioned(
+                const Positioned(
                   // group13PVM (6:3)
                   left: 0,
                   top: 0,
@@ -228,7 +228,7 @@ class _GavetaMapState extends State<GavetaMap> {
                       width: 197,
                       height: 127,
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             //gradient: LinearGradient(
                             //begin: Alignment(0.529, -0.912),
                             //end: Alignment(0, 1),
@@ -240,7 +240,7 @@ class _GavetaMapState extends State<GavetaMap> {
                     ),
                   ),
                 ),
-                Positioned(
+                const Positioned(
                   // group23Vwh (6:7)
                   left: 78,
                   top: 99,
@@ -261,12 +261,12 @@ class _GavetaMapState extends State<GavetaMap> {
                   left: 227,
                   top: 469,
                   child: Container(
-                    padding: EdgeInsets.fromLTRB(1.79, 1.79, 1.79, 1.79),
+                    padding: const EdgeInsets.fromLTRB(1.79, 1.79, 1.79, 1.79),
                     width: 23,
                     height: 23,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(11.7109413147),
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         begin: Alignment(-2.089, -3.241),
                         end: Alignment(2.289, 3.474),
                         colors: <Color>[
@@ -276,7 +276,7 @@ class _GavetaMapState extends State<GavetaMap> {
                         ],
                         stops: <double>[0, 0.586, 1],
                       ),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Color(0x3f0e174a),
                           offset: Offset(0, 3.707324028),
@@ -307,7 +307,7 @@ class _GavetaMapState extends State<GavetaMap> {
                       width: 56,
                       height: 43,
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Color(0xffd9d9d9),
                         ),
                       ),
@@ -319,10 +319,10 @@ class _GavetaMapState extends State<GavetaMap> {
                   left: 0,
                   top: 598,
                   child: Container(
-                    padding: EdgeInsets.fromLTRB(30, 56.27, 29, 43.54),
+                    padding: const EdgeInsets.fromLTRB(30, 56.27, 29, 43.54),
                     width: 390,
                     height: 245,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment(1, 1.031),
                         end: Alignment(1, -1),
@@ -339,11 +339,11 @@ class _GavetaMapState extends State<GavetaMap> {
                       children: [
                         Container(
                           // group21uvs (6:132)
-                          margin: EdgeInsets.fromLTRB(0, 46, 0, 0),
-                          padding: EdgeInsets.fromLTRB(19.5, 27, 19.5, 13.46),
+                          margin: const EdgeInsets.fromLTRB(0, 46, 0, 0),
+                          padding: const EdgeInsets.fromLTRB(19.5, 27, 19.5, 13.46),
                           width: 100,
                           height: 100,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               //  color: Color(0xfff6f7fa),
                               //borderRadius: BorderRadius.circular(10),
                               //boxShadow: [
@@ -363,7 +363,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               children: [
                                 Container(
                                   // objectsfoZ (6:136)
-                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 7.54),
+                                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 7.54),
                                   width: 38,
                                   height: 39,
                                   //child: Image.asset(
@@ -381,23 +381,23 @@ class _GavetaMapState extends State<GavetaMap> {
                                     fontSize: 9.5,
                                     fontWeight: FontWeight.w500,
                                     height: 1.30,
-                                    color: Color(0xfc003768),
+                                    color: const Color(0xfc003768),
                                   ),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
                         Container(
                           // group10dto (6:125)
-                          margin: EdgeInsets.fromLTRB(0, 46, 0, 0),
-                          padding: EdgeInsets.fromLTRB(19, 25.34, 19, 13.46),
+                          margin: const EdgeInsets.fromLTRB(0, 46, 0, 0),
+                          padding: const EdgeInsets.fromLTRB(19, 25.34, 19, 13.46),
                           width: 100,
                           height: 100,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               //color: Color(0xffffffff),
                               //borderRadius: BorderRadius.circular(10),
                               //boxShadow: [
@@ -417,7 +417,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               children: [
                                 Container(
                                   // group17CqR (6:129)
-                                  margin: EdgeInsets.fromLTRB(2, 0, 0, 2.64),
+                                  margin: const EdgeInsets.fromLTRB(2, 0, 0, 2.64),
                                   width: 45,
                                   height: 45,
                                   //child: Image.asset(
@@ -435,14 +435,14 @@ class _GavetaMapState extends State<GavetaMap> {
                                     fontSize: 9.5,
                                     fontWeight: FontWeight.w500,
                                     height: 1.30,
-                                    color: Color(0xfc003768),
+                                    color: const Color(0xfc003768),
                                   ),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
                         Container(
@@ -453,7 +453,7 @@ class _GavetaMapState extends State<GavetaMap> {
                             children: [
                               Container(
                                 // expandlessfill0wght300grad0ops (6:146)
-                                margin: EdgeInsets.fromLTRB(0, 0, 0, 12),
+                                margin: const EdgeInsets.fromLTRB(0, 0, 0, 12),
                                 width: 34,
                                 height: 34,
                                 //child: Image.asset(
@@ -464,16 +464,16 @@ class _GavetaMapState extends State<GavetaMap> {
                               ),
                               Container(
                                 // group11De3 (6:118)
-                                margin: EdgeInsets.fromLTRB(0, 0, 1, 0),
+                                margin: const EdgeInsets.fromLTRB(0, 0, 1, 0),
                                 padding:
-                                    EdgeInsets.fromLTRB(23.5, 25, 23.5, 13.46),
+                                    const EdgeInsets.fromLTRB(23.5, 25, 23.5, 13.46),
                                 width: 100,
                                 height: 100,
                                 decoration: BoxDecoration(
-                                  color: Color(0xffffffff),
+                                  color: const Color(0xffffffff),
                                   borderRadius: BorderRadius.circular(10),
                                   boxShadow: [
-                                    BoxShadow(
+                                    const BoxShadow(
                                       color: Color(0x66153a5b),
                                       offset: Offset(0, 4),
                                       blurRadius: 0,
@@ -482,7 +482,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                 ),
                                 child: Container(
                                   // group203sy (6:120)
-                                  padding: EdgeInsets.fromLTRB(0, 4.04, 0, 0),
+                                  padding: const EdgeInsets.fromLTRB(0, 4.04, 0, 0),
                                   width: double.infinity,
                                   height: double.infinity,
                                   child: Column(
@@ -568,16 +568,16 @@ class _GavetaMapState extends State<GavetaMap> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(0, 21, 10, 0),
+                                  margin: const EdgeInsets.fromLTRB(0, 21, 10, 0),
                                   child: Container(
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       // Defina a cor de fundo do container que irá envolver o Text
                                       color: Colors
                                           .transparent, // Altere para a cor desejada
                                     ),
                                     child: Text(
                                       'Temperatura: ${weatherData['temperatura']}°C',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         // Defina a cor do texto
                                         color: Colors
                                             .white, // Altere para a cor desejada
@@ -587,7 +587,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                 ),
                                 Container(
                                   // group301fpo (6:166)
-                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   child: Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
@@ -596,34 +596,34 @@ class _GavetaMapState extends State<GavetaMap> {
                                         onPressed: () {
                                           print('Ícone de Notificações');
                                         },
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.notifications,
                                           color: Colors.white,
                                         ),
                                         iconSize: 20,
-                                        padding: EdgeInsets.all(12),
+                                        padding: const EdgeInsets.all(12),
                                         splashRadius: 20,
-                                        color: Color(0x4cdcebf3),
+                                        color: const Color(0x4cdcebf3),
                                       ),
                                       IconButton(
                                         onPressed: () {
                                           print('Ícone de Configurações');
                                         },
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.settings,
                                           color: Colors.white,
                                         ),
                                         iconSize: 20,
-                                        padding: EdgeInsets.all(12),
+                                        padding: const EdgeInsets.all(12),
                                         splashRadius: 20,
-                                        color: Color.fromARGB(75, 9, 126, 189),
+                                        color: const Color.fromARGB(75, 9, 126, 189),
                                       ),
                                     ],
                                   ),
                                 ),
                                 Container(
                                   // group228Djq (6:150)
-                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                                   width: 33,
                                   height: 35,
                                   child: Image.asset(
@@ -746,7 +746,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               _loadUserImage();
                             },
                             child: Container(
-                              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                               width: 500,
                               height: 65,
                               //decoration: BoxDecoration(
@@ -757,7 +757,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                 children: [
                                   Container(
                                     // accountcirclefill0wght400grad0 (6:158)
-                                    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                    margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                                     width: 20,
                                     height: 20,
                                     child: Image.asset(
@@ -775,7 +775,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                       fontSize: 14.4000453949,
                                       fontWeight: FontWeight.w500,
                                       height: 1.3025,
-                                      color: Color(0xffffffff),
+                                      color: const Color(0xffffffff),
                                     ),
                                   ),
                                 ],
@@ -788,7 +788,7 @@ class _GavetaMapState extends State<GavetaMap> {
                           left: 0,
                           top: 460,
                           child: Container(
-                            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                             width: 150,
                             height: 24,
                             child: Row(
@@ -796,7 +796,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               children: [
                                 Container(
                                   // lockresetfill0wght400grad0opsz (6:162)
-                                  margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                  margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                                   width: 24,
                                   height: 24,
                                   child: Image.asset(
@@ -814,7 +814,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                     fontSize: 14.4000453949,
                                     fontWeight: FontWeight.w500,
                                     height: 1.3025,
-                                    color: Color(0xffffffff),
+                                    color: const Color(0xffffffff),
                                   ),
                                 ),
                               ],
@@ -827,13 +827,13 @@ class _GavetaMapState extends State<GavetaMap> {
                           top: 0,
                           child: Container(
                             padding:
-                                EdgeInsets.fromLTRB(3.69, 3.69, 3.69, 3.69),
+                                const EdgeInsets.fromLTRB(3.69, 3.69, 3.69, 3.69),
                             width: 48.23,
                             height: 48.23,
                             decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.circular(24.1128807068),
-                              gradient: LinearGradient(
+                              gradient: const LinearGradient(
                                 begin: Alignment(-2.089, -3.241),
                                 end: Alignment(2.289, 3.474),
                                 colors: <Color>[
@@ -844,7 +844,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                 stops: <double>[0, 0.586, 1],
                               ),
                               boxShadow: [
-                                BoxShadow(
+                                const BoxShadow(
                                   color: Color(0x3f0e174a),
                                   offset: Offset(0, 3.707324028),
                                   blurRadius: 1.853662014,
@@ -866,7 +866,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                           fontSize: 40,
                                           fontWeight: FontWeight.w500,
                                           height: 1,
-                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          color: const Color.fromARGB(255, 0, 0, 0),
                                         ),
                                       )
                                     : null,
@@ -890,7 +890,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                   fontSize: 20,
                                   fontWeight: FontWeight.w500,
                                   height: 1.3025,
-                                  color: Color(0xffffffff),
+                                  color: const Color(0xffffffff),
                                 ),
                               ),
                             ),
@@ -914,7 +914,7 @@ class _GavetaMapState extends State<GavetaMap> {
 
                         Container(
                           // autogroupphuv3TH (CFRC74DyYyxXjDCR24pHuV)
-                          margin: EdgeInsets.fromLTRB(45, 0, 0, 16.21),
+                          margin: const EdgeInsets.fromLTRB(45, 0, 0, 16.21),
                           height: 119.79,
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
@@ -1266,9 +1266,9 @@ class _GavetaMapState extends State<GavetaMap> {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Color(0xffc6d9eb),
+                          color: const Color(0xffc6d9eb),
                           boxShadow: [
-                            BoxShadow(
+                            const BoxShadow(
                               color: Color(0x262e3c61),
                               offset: Offset(0, 10),
                               blurRadius: 0,
@@ -1290,7 +1290,7 @@ class _GavetaMapState extends State<GavetaMap> {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(11),
-                          color: Color(0xffeaeaea),
+                          color: const Color(0xffeaeaea),
                         ),
                       ),
                     ),
@@ -1307,7 +1307,7 @@ class _GavetaMapState extends State<GavetaMap> {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
-                          color: Color(0xffb3c9de),
+                          color: const Color(0xffb3c9de),
                         ),
                       ),
                     ),
@@ -1321,7 +1321,7 @@ class _GavetaMapState extends State<GavetaMap> {
                     width: 46,
                     height: 40,
                     decoration: BoxDecoration(
-                      color: Color(0xffb3c9de),
+                      color: const Color(0xffb3c9de),
                       borderRadius: BorderRadius.circular(4),
                     ),
                     child: Center(
@@ -1333,7 +1333,7 @@ class _GavetaMapState extends State<GavetaMap> {
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
                           height: 1,
-                          color: Color(0xff1b5a98),
+                          color: const Color(0xff1b5a98),
                         ),
                       ),
                     ),
@@ -1347,7 +1347,7 @@ class _GavetaMapState extends State<GavetaMap> {
                     width: 46,
                     height: 28,
                     decoration: BoxDecoration(
-                      color: Color(0xffb3c9de),
+                      color: const Color(0xffb3c9de),
                       borderRadius: BorderRadius.circular(4),
                     ),
                     child: Center(
@@ -1359,7 +1359,7 @@ class _GavetaMapState extends State<GavetaMap> {
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
                           height: 1,
-                          color: Color(0xff1b5a98),
+                          color: const Color(0xff1b5a98),
                         ),
                       ),
                     ),
@@ -1381,7 +1381,7 @@ class _GavetaMapState extends State<GavetaMap> {
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
                           height: 1.2125,
-                          color: Color(0xff1b5a98),
+                          color: const Color(0xff1b5a98),
                         ),
                       ),
                     ),
@@ -1402,7 +1402,7 @@ class _GavetaMapState extends State<GavetaMap> {
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
                           height: 1.2125,
-                          color: Color(0xff174976),
+                          color: const Color(0xff174976),
                         ),
                       ),
                     ),
@@ -1438,7 +1438,7 @@ class _GavetaMapState extends State<GavetaMap> {
                       children: [
                         Container(
                           // ellipse89Yo (6:212)
-                          margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                          margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
                           width: 10,
                           height: 90,
                           child: Image.asset(
@@ -1456,7 +1456,7 @@ class _GavetaMapState extends State<GavetaMap> {
                             fontSize: 10,
                             fontWeight: FontWeight.w700,
                             height: 1,
-                            color: Color(0xff86a1b9),
+                            color: const Color(0xff86a1b9),
                           ),
                         ),
                       ],
@@ -1475,13 +1475,13 @@ class _GavetaMapState extends State<GavetaMap> {
                       children: [
                         Container(
                           // ellipse89Yo (6:212)
-                          margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                           width: 12,
                           height: 90,
-                          child: Icon(Icons.air, color: Color(0xff86a1b9)),
+                          child: const Icon(Icons.air, color: Color(0xff86a1b9)),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               top: 0.0,
                               left:
                                   10.0), // Espaçamento interno para reposicionar o texto
@@ -1493,7 +1493,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               fontSize: 10,
                               fontWeight: FontWeight.w700,
                               height: 1,
-                              color: Color(0xff86a1b9),
+                              color: const Color(0xff86a1b9),
                             ),
                           ),
                         ),
@@ -1516,6 +1516,6 @@ Future<LatLng> _getUserLocation(BuildContext context) async {
     return LatLng(position.latitude, position.longitude);
   } catch (e) {
     print("Error getting user location: $e");
-    return LatLng(0, 0);
+    return const LatLng(0, 0);
   }
 }

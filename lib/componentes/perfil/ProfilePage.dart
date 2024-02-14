@@ -7,7 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:meu_app/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../hamburguer/mudar_senha.dart';
+import 'mudar_senha.dart';
 
 class ProfilePage extends StatefulWidget {
   final Function() onLogout;
@@ -280,7 +280,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.fromLTRB(33.06, 0, 0, 36.55),
+        padding: EdgeInsets.fromLTRB(33.06, 0, 20, 36.55),
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -314,18 +314,21 @@ class _ProfilePageState extends State<ProfilePage> {
                       : null,
                 ),
               ),
-              SizedBox(height: 20),
-              Text('Detalhes do Perfil'
-                  /*_user?.displayName ?? '',
-                style: TextStyle(SafeGoogleFont(
-                  'Inter',
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                  height: 1.2125,
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  ),
-                ),*/
-                  ),
+              SizedBox(height: 1),
+               Padding(
+                        padding: EdgeInsets.fromLTRB(0, 15, 10, 0),
+                        child: Text(
+                          "Detalhes do Perfil",
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.clip,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.normal,
+                            fontSize: 30,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ),
+                        ),
+                      ),
               /*SizedBox(height: 10),
               Text(
                 _user?.email ?? '',
