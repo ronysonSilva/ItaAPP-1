@@ -52,7 +52,36 @@ class notification extends StatelessWidget {
                 fontSize: textSize,
                 color: Colors.black,
                 fontWeight: FontWeight.bold),
-            children: [TextSpan()]),
+            children: [
+              TextSpan(
+                  text: 'mensagem de notificação',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                  ))
+            ]),
+      ),
+    );
+  }
+
+  Widget timeAndDate() {
+    return Container(
+      margin: EdgeInsets.only(top: 5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            '23-01-2024',
+            style: TextStyle(
+              fontSize: 10,
+            ),
+          ),
+          Text(
+            '07:10',
+            style: TextStyle(
+              fontSize: 10,
+            ),
+          ),
+        ],
       ),
     );
   }
