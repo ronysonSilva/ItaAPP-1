@@ -53,7 +53,8 @@ class _ApitempoState extends State<Apitempo> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              //Text('Tempo limpo, ${weatherData['temperatura']}°C'),
+              Text(
+                  'Tempo limpo, ${weatherData['temperatura']}°C              '),
               //Text('Umidade: ${weatherData['umidade']}%'),
               //Text('Temperatura Máxima: ${weatherData['temp_max']}°C'),
               //Text('Temperatura Mínima: ${weatherData['temp_min']}°C'),

@@ -1,6 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
+import 'package:meu_app/componentes/hamburguer/notification/notification.dart';
+import 'package:meu_app/componentes/hamburguer/settings/settings.dart';
+
 import '../login/servicos/autenticacao_servico.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -340,7 +343,8 @@ class _GavetaMapState extends State<GavetaMap> {
                         Container(
                           // group21uvs (6:132)
                           margin: const EdgeInsets.fromLTRB(0, 46, 0, 0),
-                          padding: const EdgeInsets.fromLTRB(19.5, 27, 19.5, 13.46),
+                          padding:
+                              const EdgeInsets.fromLTRB(19.5, 27, 19.5, 13.46),
                           width: 100,
                           height: 100,
                           decoration: const BoxDecoration(
@@ -363,7 +367,8 @@ class _GavetaMapState extends State<GavetaMap> {
                               children: [
                                 Container(
                                   // objectsfoZ (6:136)
-                                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 7.54),
+                                  margin:
+                                      const EdgeInsets.fromLTRB(0, 0, 0, 7.54),
                                   width: 38,
                                   height: 39,
                                   //child: Image.asset(
@@ -394,7 +399,8 @@ class _GavetaMapState extends State<GavetaMap> {
                         Container(
                           // group10dto (6:125)
                           margin: const EdgeInsets.fromLTRB(0, 46, 0, 0),
-                          padding: const EdgeInsets.fromLTRB(19, 25.34, 19, 13.46),
+                          padding:
+                              const EdgeInsets.fromLTRB(19, 25.34, 19, 13.46),
                           width: 100,
                           height: 100,
                           decoration: const BoxDecoration(
@@ -417,7 +423,8 @@ class _GavetaMapState extends State<GavetaMap> {
                               children: [
                                 Container(
                                   // group17CqR (6:129)
-                                  margin: const EdgeInsets.fromLTRB(2, 0, 0, 2.64),
+                                  margin:
+                                      const EdgeInsets.fromLTRB(2, 0, 0, 2.64),
                                   width: 45,
                                   height: 45,
                                   //child: Image.asset(
@@ -465,8 +472,8 @@ class _GavetaMapState extends State<GavetaMap> {
                               Container(
                                 // group11De3 (6:118)
                                 margin: const EdgeInsets.fromLTRB(0, 0, 1, 0),
-                                padding:
-                                    const EdgeInsets.fromLTRB(23.5, 25, 23.5, 13.46),
+                                padding: const EdgeInsets.fromLTRB(
+                                    23.5, 25, 23.5, 13.46),
                                 width: 100,
                                 height: 100,
                                 decoration: BoxDecoration(
@@ -482,7 +489,8 @@ class _GavetaMapState extends State<GavetaMap> {
                                 ),
                                 child: Container(
                                   // group203sy (6:120)
-                                  padding: const EdgeInsets.fromLTRB(0, 4.04, 0, 0),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 4.04, 0, 0),
                                   width: double.infinity,
                                   height: double.infinity,
                                   child: Column(
@@ -491,8 +499,8 @@ class _GavetaMapState extends State<GavetaMap> {
                                     children: [
                                       Container(
                                         // sunnysnowingfill0wght300grad0o (6:121)
-                                        margin:
-                                            const EdgeInsets.fromLTRB(0, 0, 0, 9.94),
+                                        margin: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 9.94),
                                         width: 34,
                                         height: 34,
                                         child: Image.asset(
@@ -568,7 +576,8 @@ class _GavetaMapState extends State<GavetaMap> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  margin: const EdgeInsets.fromLTRB(0, 21, 10, 0),
+                                  margin:
+                                      const EdgeInsets.fromLTRB(0, 21, 10, 0),
                                   child: Container(
                                     decoration: const BoxDecoration(
                                       // Defina a cor de fundo do container que irá envolver o Text
@@ -594,7 +603,13 @@ class _GavetaMapState extends State<GavetaMap> {
                                     children: [
                                       IconButton(
                                         onPressed: () {
-                                          print('Ícone de Notificações');
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  notification(),
+                                            ),
+                                          );
                                         },
                                         icon: const Icon(
                                           Icons.notifications,
@@ -607,7 +622,12 @@ class _GavetaMapState extends State<GavetaMap> {
                                       ),
                                       IconButton(
                                         onPressed: () {
-                                          print('Ícone de Configurações');
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => Settings(),
+                                            ),
+                                          );
                                         },
                                         icon: const Icon(
                                           Icons.settings,
@@ -616,7 +636,8 @@ class _GavetaMapState extends State<GavetaMap> {
                                         iconSize: 20,
                                         padding: const EdgeInsets.all(12),
                                         splashRadius: 20,
-                                        color: const Color.fromARGB(75, 9, 126, 189),
+                                        color: const Color.fromARGB(
+                                            75, 9, 126, 189),
                                       ),
                                     ],
                                   ),
@@ -739,7 +760,8 @@ class _GavetaMapState extends State<GavetaMap> {
                                         'email.dinamico@example.com',
                                     userImageURL:
                                         _user?.photoURL ?? 'URL da imagem',
-                                    profile: null, userImageUrl: '',
+                                    profile: null,
+                                    userImageUrl: '',
                                   ),
                                 ),
                               );
@@ -757,7 +779,8 @@ class _GavetaMapState extends State<GavetaMap> {
                                 children: [
                                   Container(
                                     // accountcirclefill0wght400grad0 (6:158)
-                                    margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                    margin:
+                                        const EdgeInsets.fromLTRB(0, 0, 10, 0),
                                     width: 20,
                                     height: 20,
                                     child: Image.asset(
@@ -796,7 +819,8 @@ class _GavetaMapState extends State<GavetaMap> {
                               children: [
                                 Container(
                                   // lockresetfill0wght400grad0opsz (6:162)
-                                  margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                  margin:
+                                      const EdgeInsets.fromLTRB(0, 0, 10, 0),
                                   width: 24,
                                   height: 24,
                                   child: Image.asset(
@@ -826,8 +850,8 @@ class _GavetaMapState extends State<GavetaMap> {
                           left: 1,
                           top: 0,
                           child: Container(
-                            padding:
-                                const EdgeInsets.fromLTRB(3.69, 3.69, 3.69, 3.69),
+                            padding: const EdgeInsets.fromLTRB(
+                                3.69, 3.69, 3.69, 3.69),
                             width: 48.23,
                             height: 48.23,
                             decoration: BoxDecoration(
@@ -866,7 +890,8 @@ class _GavetaMapState extends State<GavetaMap> {
                                           fontSize: 25,
                                           fontWeight: FontWeight.w500,
                                           height: 1,
-                                          color: const Color.fromARGB(255, 0, 0, 0),
+                                          color: const Color.fromARGB(
+                                              255, 0, 0, 0),
                                         ),
                                       )
                                     : null,
@@ -1478,7 +1503,8 @@ class _GavetaMapState extends State<GavetaMap> {
                           margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                           width: 12,
                           height: 90,
-                          child: const Icon(Icons.air, color: Color(0xff86a1b9)),
+                          child:
+                              const Icon(Icons.air, color: Color(0xff86a1b9)),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(

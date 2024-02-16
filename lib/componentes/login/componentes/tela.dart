@@ -35,6 +35,7 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
       body: Stack(
         children: [
           Container(
+            constraints: const BoxConstraints(maxWidth: 800),
             padding: EdgeInsets.fromLTRB(33.06, 0, 0, 36.55),
             width: double.infinity,
             decoration: BoxDecoration(

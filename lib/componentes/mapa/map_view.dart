@@ -23,6 +23,7 @@ import '../hamburguer/gaveta_mapa_hamburguer.dart';
 import '../localizacao/LocationTracker.dart';
 import '../perfil/ProfilePage.dart';
 import 'componentes/map_view/map_routes.dart';
+import 'componentes/bottom_navigation_bar/bottom_navigation_bar.dart';
 
 class MapView extends StatefulWidget {
   final Function() onLogout;
@@ -101,35 +102,33 @@ class _MapViewState extends State<MapView> {
 
   Future<void> _fetchUser() async {
     _user = _auth.currentUser;
-    setState(() async {
-      if (_user?.photoURL != null) {
-        try {
-          // Primeiro, tentamos carregar a imagem do Firebase Storage
-          String downloadURL = await firebase_storage.FirebaseStorage.instance
-              .ref('profile_images/${_user!.uid}.jpg')
-              .getDownloadURL();
+    if (_user?.photoURL != null) {
+      try {
+        // Primeiro, tentamos carregar a imagem do Firebase Storage
+        String downloadURL = await firebase_storage.FirebaseStorage.instance
+            .ref('profile_images/${_user!.uid}.jpg')
+            .getDownloadURL();
 
+        setState(() {
+          _userImage = File(downloadURL);
+        });
+
+        // Salva a imagem localmente para evitar carregamentos repetidos do Storage
+        await _saveUserImage();
+      } catch (e) {
+        // Se ocorrer um erro ao buscar no Firebase Storage, tentamos carregar localmente
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        String? imagePath = prefs.getString('userImage');
+
+        if (imagePath != null) {
           setState(() {
-            _userImage = File(downloadURL);
+            _userImage = File(imagePath);
           });
-
-          // Salva a imagem localmente para evitar carregamentos repetidos do Storage
-          await _saveUserImage();
-        } catch (e) {
-          // Se ocorrer um erro ao buscar no Firebase Storage, tentamos carregar localmente
-          SharedPreferences prefs = await SharedPreferences.getInstance();
-          String? imagePath = prefs.getString('userImage');
-
-          if (imagePath != null) {
-            setState(() {
-              _userImage = File(imagePath);
-            });
-          } else {
-            print('Error fetching image from Firebase Storage: $e');
-          }
+        } else {
+          print('Error fetching image from Firebase Storage: $e');
         }
       }
-    });
+    }
   }
 
   Future<void> _saveUserImage() async {
@@ -163,7 +162,7 @@ class _MapViewState extends State<MapView> {
     mapStyleManager = MapStyleManager(_controller);
   }
 
-  int _indiceAtual = 0;
+  /*int _indiceAtual = 0;
   final List<Widget> _telas = [
     //MapView("Minha conta"),
     chamados("chamados"),
@@ -172,7 +171,7 @@ class _MapViewState extends State<MapView> {
     setState(() {
       _indiceAtual = index;
     });
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -557,7 +556,7 @@ class _MapViewState extends State<MapView> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      /*bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Color.fromARGB(255, 0, 55, 104),
         iconSize: 30,
         currentIndex: _indiceAtual,
@@ -571,7 +570,7 @@ class _MapViewState extends State<MapView> {
           BottomNavigationBarItem(
               icon: Icon(Icons.feed_outlined), label: 'Chamados'),
         ],
-      ),
+      ),*/
     );
   }
 

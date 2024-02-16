@@ -22,7 +22,9 @@ class ProfilePage extends StatefulWidget {
     required this.userName,
     required this.userEmail,
     required this.userImageURL,
-    required profile, File? userImage, required String userImageUrl,
+    required profile,
+    File? userImage,
+    required String userImageUrl,
   });
 
   get userImage => null;
@@ -280,6 +282,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        constraints: const BoxConstraints(maxWidth: 400),
         padding: EdgeInsets.fromLTRB(33.06, 0, 20, 36.55),
         width: double.infinity,
         decoration: BoxDecoration(
@@ -315,20 +318,20 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               SizedBox(height: 1),
-               Padding(
-                        padding: EdgeInsets.fromLTRB(0, 15, 10, 0),
-                        child: Text(
-                          "Detalhes do Perfil",
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.clip,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.normal,
-                            fontSize: 30,
-                            color: Color.fromARGB(255, 255, 255, 255),
-                          ),
-                        ),
-                      ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 15, 10, 0),
+                child: Text(
+                  "Detalhes do Perfil",
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.clip,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.normal,
+                    fontSize: 30,
+                    color: Color.fromARGB(255, 255, 255, 255),
+                  ),
+                ),
+              ),
               /*SizedBox(height: 10),
               Text(
                 _user?.email ?? '',
@@ -448,6 +451,7 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
+
   void _esqueceuSenha(BuildContext context) {
     Navigator.push(
       context,
