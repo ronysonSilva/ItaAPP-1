@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:ui';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
@@ -9,21 +8,18 @@ import 'package:flutter/services.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:meu_app/componentes/chamados/chamados.dart';
-import 'package:meu_app/componentes/mapa/map_view_lixo.dart';
-import 'package:meu_app/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../api/api_tempo.dart';
 import '../api/carPosicao.dart';
-import '../chamados/chamados.dart';
+import '../api/lixo_posicao.dart';
 import '../controllers/map_markers.dart';
 import '../estilosMapa/componente/Map_style_manager.dart';
 import '../estilosMapa/map_style_branco.dart';
 import '../hamburguer/gaveta_mapa_hamburguer.dart';
 import '../localizacao/LocationTracker.dart';
 import '../perfil/ProfilePage.dart';
-import 'componentes/map_view/map_routes.dart';
-import 'componentes/bottom_navigation_bar/bottom_navigation_bar.dart';
+import '../rotas/rota.dart';
+import 'componentes/map_main/modal_mapa.dart';
 
 class MapView extends StatefulWidget {
   final Function() onLogout;
@@ -63,16 +59,21 @@ class _MapViewState extends State<MapView> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   late User? _user;
   late String userImageUrl;
-  List<LatLng> _route1Coordinates = [];
-  List<LatLng> _route2Coordinates = [];
+  late GoogleMapController mapController;
+  LatLng _center = const LatLng(-22.8542, -43.7753);
+  Set<Marker> _userLocationMarker = {};
+  Set<Marker> _manualMarkers = {};
+  Set<Polyline> polylines = {};
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  bool _isOperationInProgress = false;
 
   @override
   void initState() {
     super.initState();
-    _fetchUser();
+    _buscarUsuario();
     locationTracker = LocationTracker();
     locationTracker.startTracking();
-    LocationTracker.busLocationStream.listen(_updateBusMarker);
+    LocationTracker.busLocationStream.listen(_atualizacaoMarcadorDeUsuario);
     userImageUrl = widget.userImageUrl;
     FlutterCompass.events?.listen((CompassEvent? event) {
       if (event != null && event.heading != null && followUser) {
@@ -83,13 +84,19 @@ class _MapViewState extends State<MapView> {
     });
 
     MapMarkers.getMarkers(context).then((result) {
+      // Filtrar os marcadores, mantendo apenas o marcador de geolocalização
+      List<Marker> filteredMarkers = result
+          .where((marker) => marker.markerId.value == 'busLocation')
+          .toList();
+
       setState(() {
-        markers = result;
+        markers = filteredMarkers
+            .toSet(); // Converte a lista filtrada de volta para um conjunto de marcadores
       });
     });
 
     centerOnBusTimer = Timer.periodic(Duration(minutes: 1), (Timer timer) {
-      _centerOnBus();
+      _centralizarUsuario();
     });
 
     _controller = Completer();
@@ -100,45 +107,47 @@ class _MapViewState extends State<MapView> {
     });
   }
 
-  Future<void> _fetchUser() async {
+  Future<void> _buscarUsuario() async {
     _user = _auth.currentUser;
-    if (_user?.photoURL != null) {
-      try {
-        // Primeiro, tentamos carregar a imagem do Firebase Storage
-        String downloadURL = await firebase_storage.FirebaseStorage.instance
-            .ref('profile_images/${_user!.uid}.jpg')
-            .getDownloadURL();
+    setState(() async {
+      if (_user?.photoURL != null) {
+        try {
+          // Primeiro, tentamos carregar a imagem do Firebase Storage
+          String downloadURL = await firebase_storage.FirebaseStorage.instance
+              .ref('profile_images/${_user!.uid}.jpg')
+              .getDownloadURL();
 
-        setState(() {
-          _userImage = File(downloadURL);
-        });
-
-        // Salva a imagem localmente para evitar carregamentos repetidos do Storage
-        await _saveUserImage();
-      } catch (e) {
-        // Se ocorrer um erro ao buscar no Firebase Storage, tentamos carregar localmente
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        String? imagePath = prefs.getString('userImage');
-
-        if (imagePath != null) {
           setState(() {
-            _userImage = File(imagePath);
+            _userImage = File(downloadURL);
           });
-        } else {
-          print('Error fetching image from Firebase Storage: $e');
+
+          // Salva a imagem localmente para evitar carregamentos repetidos do Storage
+          await _savaImagemUsuario();
+        } catch (e) {
+          // Se ocorrer um erro ao buscar no Firebase Storage, tentamos carregar localmente
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          String? imagePath = prefs.getString('userImage');
+
+          if (imagePath != null) {
+            setState(() {
+              _userImage = File(imagePath);
+            });
+          } else {
+            print('Error fetching image from Firebase Storage: $e');
+          }
         }
       }
-    }
+    });
   }
 
-  Future<void> _saveUserImage() async {
+  Future<void> _savaImagemUsuario() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (_userImage != null) {
       prefs.setString('userImage', _userImage!.path);
     }
   }
 
-  Future<void> _loadUserImage() async {
+  Future<void> _carregarImagemUsuario() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? imagePath = prefs.getString('userImage');
 
@@ -162,7 +171,7 @@ class _MapViewState extends State<MapView> {
     mapStyleManager = MapStyleManager(_controller);
   }
 
-  /*int _indiceAtual = 0;
+  int _indiceAtual = 0;
   final List<Widget> _telas = [
     //MapView("Minha conta"),
     chamados("chamados"),
@@ -171,7 +180,7 @@ class _MapViewState extends State<MapView> {
     setState(() {
       _indiceAtual = index;
     });
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -200,7 +209,7 @@ class _MapViewState extends State<MapView> {
             onNewButtonAction: () {},
             onProfileImageChanged: () {
               widget.updateProfileImageCallback(_userImage);
-              _loadUserImage();
+              _carregarImagemUsuario();
             },
           ),
           body: Builder(
@@ -212,8 +221,13 @@ class _MapViewState extends State<MapView> {
                     target: LatLng(-22.8665, -43.7772),
                     zoom: 14,
                   ),
-                  markers: markers.union(carPositionMarkers),
-                  polylines: _polylines,
+                  markers: {
+                    ..._manualMarkers,
+                    ..._userLocationMarker,
+                    ...carPositionMarkers,
+                    ...markers,
+                  },
+                  polylines: polylines,
                   myLocationEnabled: false,
                   compassEnabled: true,
                   onCameraMove: (CameraPosition position) {
@@ -222,11 +236,14 @@ class _MapViewState extends State<MapView> {
                   },
                   onCameraIdle: () {
                     if (followUser) {
-                      _rotateMap(currentHeading);
+                      _girarMapa(currentHeading);
                     }
                   },
                 ),
-
+                CustomBottomSheet(
+                  onToggleMarkers: _alternarMarcadores,
+                  onTogglePolylines: _alternarPolilinhas,
+                ),
                 Positioned(
                   top: 30,
                   right: 20,
@@ -242,7 +259,7 @@ class _MapViewState extends State<MapView> {
                             _userImage != null ? FileImage(_userImage!) : null,
                         child: _userImage == null
                             ? Text(
-                                _generateAvatarFromName(widget.userName),
+                                _gerarAvatarApartirDonome(widget.userName),
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -254,334 +271,74 @@ class _MapViewState extends State<MapView> {
                     ),
                   ),
                 ),
-
-                //RONY
-
-                Positioned(
-                  // Aqui é onde se desenha e orienta o azul gradiente
-                  left: 0,
-                  top: 500,
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(30, 40.27, 29, 43.54),
-                    width: 450,
-                    height: 190,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment(1, 1.031),
-                        end: Alignment(1, -1),
-                        colors: <Color>[
-                          Color(0xff003768),
-                          Color(0xa4003768),
-                          Color(0x00003768)
-                        ],
-                        stops: <double>[0, 0.461, 1],
-                      ),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => MapView(
-                                  onLogout: () async {
-                                    // Adicione aqui a lógica para fazer logout
-                                  },
-                                  onUpdate: (user, userImage) {
-                                    // Adicione aqui a lógica para atualizar o usuário
-                                  },
-                                  userName: 'Nome do Usuário',
-                                  userEmail: 'email@example.com',
-                                  userImageUrl: 'URL da Imagem do Perfil',
-                                  updateProfileImageCallback:
-                                      (File? userImage) {},
-                                  userImageURL: null,
-                                ),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            // group212uH (14:415)
-                            margin: EdgeInsets.fromLTRB(25, 0, 0, 0),
-                            padding: EdgeInsets.fromLTRB(19, 15, 19, 13),
-                            width: 150,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              color: Color(0xfff6f7fa),
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x66153a5b),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 0,
-                                ),
-                              ],
-                            ),
-                            child: Container(
-                              // group18GYj (14:409)
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    // objects4Dh (14:399)
-                                    margin: EdgeInsets.fromLTRB(5, 0, 0, 7),
-                                    width: 50,
-                                    height: 50,
-                                    child: Image.asset(
-                                      'assets/images/icons/bus_alert.png',
-                                      width: 50,
-                                      height: 50,
-                                    ),
-                                  ),
-                                  Text(
-                                    // coletadelixoMib (14:373)
-                                    'Ônibus Grátis',
-                                    textAlign: TextAlign.center,
-                                    style: SafeGoogleFont(
-                                      'DM Sans',
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                      height: 1.5,
-                                      color: Color(0xff003768),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => MapViewLixo(
-                                  onLogout: () async {
-                                    // Adicione aqui a lógica para fazer logout
-                                  },
-                                  onUpdate: (user, userImage) {
-                                    // Adicione aqui a lógica para atualizar o usuário
-                                  },
-                                  userName: 'Nome do Usuário',
-                                  userEmail: 'email@example.com',
-                                  userImageUrl: 'URL da Imagem do Perfil',
-                                  updateProfileImageCallback:
-                                      (File? userImage) {},
-                                  userImageURL: null,
-                                ),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            // group103bR (14:51)
-                            margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                            padding: EdgeInsets.fromLTRB(19, 10, 19, 13),
-                            width: 150,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x66153a5b),
-                                  offset: Offset(0, 4),
-                                  blurRadius: 0,
-                                ),
-                              ],
-                            ),
-                            child: Container(
-                              // group19VCX (14:410)
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    // group173E3 (14:384)
-                                    margin: EdgeInsets.fromLTRB(5, 10, 0, 7),
-                                    width: 45,
-                                    height: 45,
-                                    child: Image.asset(
-                                      'assets/images/icons/trash.png',
-                                      width: 45,
-                                      height: 45,
-                                    ),
-                                  ),
-                                  Text(
-                                    // nibusgrtisx67 (14:374)
-                                    'Coleta de lixo',
-                                    textAlign: TextAlign.center,
-                                    style: SafeGoogleFont(
-                                      'DM Sans',
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                      height: 1.5,
-                                      color: Color(0xff003768),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        /*Container(
-                        // autogrouppfhu37Z (SWfE8cA48bYRCNztS5PFhu)
-                        height: double.infinity,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Container(
-                              // expandlessfill0wght300grad0ops (14:389)
-                              margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                              width: 34,
-                              height: 34,
-                              child: Image.asset(
-                                'assets/images/icons/show_modal_button.png',
-                                width: 34,
-                                height: 34,
-                              ),
-                            ),
-                            Container(
-                              // group11TSB (14:56)
-                              margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                              padding: EdgeInsets.fromLTRB(19, 10, 19, 13),
-                              width: 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                color: Color(0xffffffff),
-                                borderRadius: BorderRadius.circular(10 * fem),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0x66153a5b),
-                                    offset: Offset(0, 4),
-                                    blurRadius: 0,
-                                  ),
-                                ],
-                              ),
-                              child: Container(
-                                // group20jPh (14:411)
-                                padding: EdgeInsets.fromLTRB(5, 10, 0, 10),
-                                width: 100,
-                                height: 100,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      // sunnysnowingfill0wght300grad0o (14:387)
-                                      margin: EdgeInsets.fromLTRB(0, 0, 0, 9),
-                                      width: 38,
-                                      height: 39,
-                                      child: Image.asset(
-                                        'assets/images/icons/sunny_snowing.png',
-                                        width: 38,
-                                        height: 39,
-                                      ),
-                                    ),
-                                    Text(
-                                      // defesacivil8wd (14:375)
-                                      'Defesa Civil',
-                                      textAlign: TextAlign.center,
-                                      style: SafeGoogleFont(
-                                        'DM Sans',
-                                        fontSize: 9.534535408 * ffem,
-                                        fontWeight: FontWeight.w500,
-                                        height: 1.3025 * ffem / fem,
-                                        color: Color(0xff003768),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),*/
-                      ],
-                    ),
-                  ),
-                ),
-
-                //RONY
-
                 Positioned(
                   top: 16,
                   right: 16,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      /* Container(
-                        color: Colors.red,
-                        child: Text(
-                          'Olá, ${widget.userName}',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),*/
                       SizedBox(height: 8),
                       Apitempo(),
                     ],
                   ),
-                ),
-                Positioned(
-                  bottom: 16,
-                  left: 16,
-                  child: CarPositionComponentWithoutMap(
-                    onUpdateMarkers: (Set<Marker> newMarkers) {
-                      setState(() {
-                        carPositionMarkers = newMarkers;
-                      });
-                    },
-                    userAvatar: userImageUrl,
-                  ),
-                ),
-                MapRoutesComponent(
-                  polylines: _polylines,
-                  // Adicione as coordenadas das rotas se necessário
-                  route1Coordinates: _route1Coordinates,
-                  route2Coordinates: _route2Coordinates,
                 ),
               ],
             ),
           ),
         ),
       ),
-      /*bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromARGB(255, 0, 55, 104),
-        iconSize: 30,
-        currentIndex: _indiceAtual,
-        fixedColor: Colors.white,
-        unselectedItemColor: Color.fromARGB(255, 175, 199, 220),
-        onTap: _onItemTapped,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle_outlined), label: 'Mapa'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.feed_outlined), label: 'Chamados'),
-        ],
-      ),*/
     );
   }
 
-  void _updateBusMarker(LatLng busLocation) async {
-    this.busLocation = busLocation;
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
 
+  Future<void> _alternarMarcadores() async {
+    try {
+      Set<Marker> markers = await MapMarkers.getMarkers(context);
+      Set<Marker> carMarkers = await CarPositionComponentWithoutMap.fetchData();
+      setState(() {
+        _manualMarkers = {...markers, ...carMarkers};
+        polylines = {};
+      });
+    } catch (error) {
+      print("Erro ao alterar marcador: $error");
+    }
+  }
+
+  Future<void> _alternarPolilinhas() async {
+    try {
+      Set<Marker> carMarkers =
+          await LixoPositionComponentWithoutMap.fetchData();
+      setState(() {
+        _manualMarkers = {...carMarkers};
+        polylines = {
+          _criarPolilinhas(Rota.rota1(), Colors.blue),
+          _criarPolilinhas(Rota.rota2(), Colors.red),
+        };
+      });
+    } catch (error) {
+      print("Erro ao alterar polilinha: $error");
+    }
+  }
+
+  Polyline _criarPolilinhas(Rota rota, Color color) {
+    return Polyline(
+      polylineId: PolylineId(rota.nome),
+      color: color,
+      width: 5,
+      points: rota.coordenadas,
+    );
+  }
+
+  void _atualizacaoMarcadorDeUsuario(LatLng busLocation) async {
+    this.busLocation = busLocation;
     // Verifica se o usuário tem uma imagem de perfil
     if (_userImage != null) {
-      // Obtém um ícone de ônibus com a imagem do perfil do usuário
-      final BitmapDescriptor busIcon = await _getResizedBusIcon(_userImage!);
-
+      // Obtém um ícone de usuario com a imagem do perfil do usuário
+      final BitmapDescriptor busIcon =
+          await _obterIconeDeUsuarioRedimensionado(_userImage!);
       setState(() {
         markers.removeWhere((marker) => marker.markerId.value == 'busLocation');
         markers.add(
@@ -607,8 +364,8 @@ class _MapViewState extends State<MapView> {
     } else {
       // Se o usuário não tiver uma imagem de perfil, utiliza um ícone padrão
       final BitmapDescriptor defaultBusIcon =
-          await _getResizedBusIconWithInitial(_generateBusAvatar());
-
+          await _obterIconeDeUsuarioRedimensionadoCominicial(
+              _gerarAvatarUsuario());
       setState(() {
         markers.removeWhere((marker) => marker.markerId.value == 'busLocation');
         markers.add(
@@ -620,7 +377,6 @@ class _MapViewState extends State<MapView> {
           ),
         );
       });
-
       if (followUser) {
         googleMapController.animateCamera(
           CameraUpdate.newCameraPosition(
@@ -634,7 +390,8 @@ class _MapViewState extends State<MapView> {
     }
   }
 
-  Future<BitmapDescriptor> _getResizedBusIcon(File userImage) async {
+  Future<BitmapDescriptor> _obterIconeDeUsuarioRedimensionado(
+      File userImage) async {
     final Uint8List bytes = await userImage.readAsBytes();
     final codec = await instantiateImageCodec(
       bytes,
@@ -644,11 +401,10 @@ class _MapViewState extends State<MapView> {
     final FrameInfo frameInfo = await codec.getNextFrame();
     final ByteData? resizedData =
         await frameInfo.image.toByteData(format: ImageByteFormat.png);
-
     return BitmapDescriptor.fromBytes(resizedData!.buffer.asUint8List());
   }
 
-  Future<BitmapDescriptor> _getResizedBusIconWithInitial(
+  Future<BitmapDescriptor> _obterIconeDeUsuarioRedimensionadoCominicial(
       String avatarInitial) async {
     final PictureRecorder pictureRecorder = PictureRecorder();
     final Canvas canvas = Canvas(pictureRecorder);
@@ -664,23 +420,16 @@ class _MapViewState extends State<MapView> {
       ),
       textDirection: TextDirection.ltr,
     );
-
-    // Draw a blue circle
     canvas.drawCircle(Offset(50, 50), 50, paintCircle);
-
-    // Layout and paint the text in the center of the circle
     textPainter.layout();
     textPainter.paint(canvas,
         Offset((100 - textPainter.width) / 2, (100 - textPainter.height) / 2));
-
-    // Convert the drawing to a BitmapDescriptor
     final img = await pictureRecorder.endRecording().toImage(100, 100);
     final data = await img.toByteData(format: ImageByteFormat.png);
-
     return BitmapDescriptor.fromBytes(data!.buffer.asUint8List());
   }
 
-  String _generateAvatarFromName([String? userName]) {
+  String _gerarAvatarApartirDonome([String? userName]) {
     String initials = 'AA';
 
     if (_user?.displayName != null && _user!.displayName!.isNotEmpty) {
@@ -696,11 +445,11 @@ class _MapViewState extends State<MapView> {
     return initials;
   }
 
-  String _generateBusAvatar() {
-    return _generateAvatarFromName();
+  String _gerarAvatarUsuario() {
+    return _gerarAvatarApartirDonome();
   }
 
-  void _centerOnBus() {
+  void _centralizarUsuario() {
     if (busLocation != null && googleMapController != null) {
       googleMapController.animateCamera(
         CameraUpdate.newCameraPosition(
@@ -714,7 +463,7 @@ class _MapViewState extends State<MapView> {
     }
   }
 
-  void _rotateMap(double heading) {
+  void _girarMapa(double heading) {
     if (googleMapController != null) {
       googleMapController.animateCamera(
         CameraUpdate.newCameraPosition(
@@ -748,6 +497,6 @@ class _MapViewState extends State<MapView> {
       ),
     );
     // Atualizar a imagem do perfil quando retornar
-    _loadUserImage();
+    _carregarImagemUsuario();
   }
 }

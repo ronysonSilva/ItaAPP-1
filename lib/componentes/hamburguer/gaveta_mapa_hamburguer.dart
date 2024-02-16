@@ -15,7 +15,7 @@ import '../controllers/map_markers.dart';
 import '../api/api_tempo.dart';
 import 'package:http/http.dart' as http;
 import '../mapa/map_view.dart';
-import '../mapa/map_view_lixo.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher_android/url_launcher_android.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
