@@ -1,12 +1,12 @@
-import 'dart:convert';
 import 'dart:async';
-import 'dart:typed_data';
+import 'dart:convert';
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:http/http.dart' as http;
 
 class CarPositionComponentWithoutMap extends StatefulWidget {
   final void Function(Set<Marker>) onUpdateMarkers;
@@ -17,35 +17,8 @@ class CarPositionComponentWithoutMap extends StatefulWidget {
   @override
   _CarPositionComponentWithoutMapState createState() =>
       _CarPositionComponentWithoutMapState();
-}
 
-class _CarPositionComponentWithoutMapState
-    extends State<CarPositionComponentWithoutMap> {
-  List<Map<String, dynamic>> positions = [];
-  Set<Marker> markers = {};
-  late Timer timer;
-
-  @override
-  void initState() {
-    super.initState();
-    _checkLocationPermissionAndFetchData();
-    timer = Timer.periodic(Duration(seconds: 5), (Timer t) => fetchData());
-  }
-
-  Future<void> _checkLocationPermissionAndFetchData() async {
-    LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission != LocationPermission.whileInUse &&
-          permission != LocationPermission.always) {
-        return;
-      }
-    }
-
-    fetchData();
-  }
-
-  Future<void> fetchData() async {
+  static Future<Set<Marker>> fetchData() async {
     try {
       final String apiUrl = 'http://45.170.17.10:9092/api/positions';
       final String username = 'talmeida21986@gmail.com';
@@ -61,36 +34,32 @@ class _CarPositionComponentWithoutMapState
 
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
-        setState(() async {
-          positions = List<Map<String, dynamic>>.from(data);
-          markers.clear();
+        final Set<Marker> markers = {};
 
-          for (var position in positions) {
-            final BitmapDescriptor carIcon = await _getResizedCarIcon();
-            markers.add(
-              Marker(
-                markerId: MarkerId(position['id'].toString()),
-                position: LatLng(position['latitude'], position['longitude']),
-                icon: carIcon,
-                infoWindow: InfoWindow(title: 'Carro ID ${position['id']}'),
-              ),
-            );
-          }
+        for (var position in data) {
+          final BitmapDescriptor carIcon = await _getResizedCarIcon();
+          markers.add(
+            Marker(
+              markerId: MarkerId(position['id'].toString()),
+              position: LatLng(position['latitude'], position['longitude']),
+              icon: carIcon,
+              infoWindow: InfoWindow(title: 'Carro ID ${position['id']}'),
+            ),
+          );
+        }
 
-          // Pass updated markers to the parent widget
-          widget.onUpdateMarkers(markers);
-        });
-
-        print('Dados da API recebidos com sucesso!');
+        return markers;
       } else {
         print('Erro ao buscar dados da API: ${response.statusCode}');
+        return Set<Marker>();
       }
     } catch (e) {
       print('Erro ao fazer a solicitação HTTP: $e');
+      return Set<Marker>();
     }
   }
 
-  Future<BitmapDescriptor> _getResizedCarIcon() async {
+  static Future<BitmapDescriptor> _getResizedCarIcon() async {
     final ByteData data = await rootBundle.load('assets/images/bus_red.png');
     final Uint8List bytes = data.buffer.asUint8List();
 
@@ -104,6 +73,37 @@ class _CarPositionComponentWithoutMapState
         await frameInfo.image.toByteData(format: ImageByteFormat.png);
 
     return BitmapDescriptor.fromBytes(resizedData!.buffer.asUint8List());
+  }
+}
+
+class _CarPositionComponentWithoutMapState
+    extends State<CarPositionComponentWithoutMap> {
+  late Timer timer;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkLocationPermissionAndFetchData();
+    timer = Timer.periodic(Duration(seconds: 5), (Timer t) => _fetchData());
+  }
+
+  Future<void> _checkLocationPermissionAndFetchData() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission != LocationPermission.whileInUse &&
+          permission != LocationPermission.always) {
+        return;
+      }
+    }
+
+    _fetchData();
+  }
+
+  Future<void> _fetchData() async {
+    final Set<Marker> markers =
+        await CarPositionComponentWithoutMap.fetchData();
+    widget.onUpdateMarkers(markers);
   }
 
   @override
