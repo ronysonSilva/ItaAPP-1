@@ -901,20 +901,20 @@ class _GavetaMapState extends State<GavetaMap> {
                         ),
                         Positioned(
                           // oliago4bM (6:172)
-                          left: 65,
-                          top: 2.0703735352,
+                          left: 62,
+                          top: 1,
                           child: Align(
                             child: SizedBox(
-                              width: 86,
-                              height: 28,
+                              width: 100,
+                              height: 50,
                               child: Text(
-                                _user?.displayName ?? '',
+                                'Olá ${_user?.displayName?.split(" ")[0] ?? "Usuário"}',
                                 textAlign: TextAlign.center,
                                 style: SafeGoogleFont(
                                   'DM Sans',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500,
-                                  height: 1.3025,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700,
+                                  height: 2,
                                   color: const Color(0xffffffff),
                                 ),
                               ),
@@ -1356,7 +1356,7 @@ class _GavetaMapState extends State<GavetaMap> {
                         style: SafeGoogleFont(
                           'Inter',
                           fontSize: 15,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w700,
                           height: 1,
                           color: const Color(0xff1b5a98),
                         ),
@@ -1421,7 +1421,7 @@ class _GavetaMapState extends State<GavetaMap> {
                       width: 98,
                       height: 39,
                       child: Text(
-                        'Parcialmente ensolarado',
+                        '${weatherData['weather_description']}',
                         style: SafeGoogleFont(
                           'Inter',
                           fontSize: 13,
@@ -1474,7 +1474,7 @@ class _GavetaMapState extends State<GavetaMap> {
                         ),
                         Text(
                           // 3u5 (6:211)
-                          '${weatherData['umidade']}%',
+                          '${weatherData['umidade']} %',
                           textAlign: TextAlign.center,
                           style: SafeGoogleFont(
                             'Inter',

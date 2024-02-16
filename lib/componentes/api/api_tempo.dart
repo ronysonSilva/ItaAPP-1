@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -9,6 +10,7 @@ class Apitempo extends StatefulWidget {
 }
 
 class _ApitempoState extends State<Apitempo> {
+  User? _user;
   Map<String, dynamic> weatherData = {};
 
   Future<void> fetchWeatherData() async {
@@ -53,12 +55,16 @@ class _ApitempoState extends State<Apitempo> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text('Olá ${_user?.displayName?.split(" ")[0] ?? "Usuário"}'),
               Text(
-                  'Tempo limpo, ${weatherData['temperatura']}°C              '),
+                  '${weatherData['weather_description']} ${weatherData['temperatura']}°C              '),
               //Text('Umidade: ${weatherData['umidade']}%'),
+
               //Text('Temperatura Máxima: ${weatherData['temp_max']}°C'),
               //Text('Temperatura Mínima: ${weatherData['temp_min']}°C'),
               //Text('Velocidade do Vento: ${weatherData['wind_speed']} m/s'),
+              //
+
               // Add other widgets as needed for additional data
             ],
           ),

@@ -60,13 +60,14 @@ class LixoPositionComponentWithoutMap extends StatefulWidget {
   }
 
   static Future<BitmapDescriptor> _getResizedCarIcon() async {
-    final ByteData data = await rootBundle.load('assets/images/bus_color.png');
+    final ByteData data =
+        await rootBundle.load('assets/images/caminhao_lixo_icon.png');
     final Uint8List bytes = data.buffer.asUint8List();
 
     final codec = await instantiateImageCodec(
       bytes,
-      targetHeight: 150,
-      targetWidth: 150,
+      targetHeight: 100,
+      targetWidth: 80,
     );
     final FrameInfo frameInfo = await codec.getNextFrame();
     final ByteData? resizedData =
