@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:meu_app/utils.dart';
 
 class Apitempo extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _ApitempoState extends State<Apitempo> {
   Future<void> fetchWeatherData() async {
     try {
       final response =
-          await http.get(Uri.parse('http://45.170.17.10:5000/clima'));
+          await http.get(Uri.parse('http://45.170.17.10:5000/previsao_tempo'));
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> responseData = json.decode(response.body);
@@ -55,9 +56,28 @@ class _ApitempoState extends State<Apitempo> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Olá ${_user?.displayName?.split(" ")[0] ?? "Usuário"}'),
               Text(
-                  '${weatherData['weather_description']} ${weatherData['temperatura']}°C              '),
+                'Olá ${_user?.displayName?.split(" ")[0] ?? ''}',
+                textAlign: TextAlign.center,
+                style: SafeGoogleFont(
+                  'DM Sans',
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  height: 2,
+                  color: Color.fromARGB(255, 2, 2, 2),
+                ),
+              ),
+              Text(
+                '${weatherData['weather_description']} ${weatherData['temperatura']}°C              ',
+                style: SafeGoogleFont(
+                  'DM Sans',
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  height: 2,
+                  color: Color.fromARGB(255, 5, 5, 5),
+                ),
+              ),
+              //Text('Umidade: ${weatherData['umidade_max']}%'),
               //Text('Umidade: ${weatherData['umidade']}%'),
 
               //Text('Temperatura Máxima: ${weatherData['temp_max']}°C'),

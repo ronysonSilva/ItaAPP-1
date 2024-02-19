@@ -939,16 +939,16 @@ class _GavetaMapState extends State<GavetaMap> {
 
                         Container(
                           // autogroupphuv3TH (CFRC74DyYyxXjDCR24pHuV)
-                          margin: const EdgeInsets.fromLTRB(45, 0, 0, 16.21),
+                          margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                           height: 119.79,
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                /*Container(
+                                Container(
                                   // autogroupphuv3TH (CFRC74DyYyxXjDCR24pHuV)
-                                  margin: EdgeInsets.fromLTRB(45, 0, 0, 16.21),
+                                  margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
                                   height: 119.79,
                                   child: SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
@@ -989,7 +989,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                                               0, 0, 0, 10.47),
                                                       width: double.infinity,
                                                       child: Text(
-                                                        'Sex. 2',
+                                                        'Ter. 2',
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: SafeGoogleFont(
@@ -1073,7 +1073,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                                       ),
                                                       child: Center(
                                                         child: Text(
-                                                          '23º',
+                                                          '${weatherData['temp_min']}°C',
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: SafeGoogleFont(
@@ -1235,11 +1235,12 @@ class _GavetaMapState extends State<GavetaMap> {
                                             ],
                                           ),
                                         ),
+
                                         // Add more sets of containers if needed
                                       ],
                                     ),
                                   ),
-                                ),*/
+                                ),
 
                                 Container(
                                     // Your existing code for the second Container
@@ -1474,7 +1475,7 @@ class _GavetaMapState extends State<GavetaMap> {
                         ),
                         Text(
                           // 3u5 (6:211)
-                          '${weatherData['umidade']} %',
+                          '${weatherData['humidity']} %',
                           textAlign: TextAlign.center,
                           style: SafeGoogleFont(
                             'Inter',
