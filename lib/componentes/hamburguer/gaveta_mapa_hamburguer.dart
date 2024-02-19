@@ -13,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:geolocator/geolocator.dart';
 import '../controllers/map_markers.dart';
 import '../api/api_tempo.dart';
+import '../api/api_tempo_semana.dart';
 import 'package:http/http.dart' as http;
 import '../mapa/map_view.dart';
 
@@ -88,6 +89,18 @@ class _GavetaMapState extends State<GavetaMap> {
       setState(() {
         weatherData = {'error': 'Falha ao carregar dados da API'};
       });
+    }
+  }
+
+  Future<List<Previsao>> fetchPrevisoes() async {
+    final response =
+        await http.get(Uri.parse('http://45.170.17.10:5000/previsao_tempo'));
+    if (response.statusCode == 200) {
+      final List<dynamic> previsoesJson =
+          jsonDecode(response.body)['previsoes'];
+      return previsoesJson.map((json) => Previsao.fromJson(json)).toList();
+    } else {
+      throw Exception('Falha ao carregar previsões');
     }
   }
 
@@ -817,7 +830,7 @@ class _GavetaMapState extends State<GavetaMap> {
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Container(
+                                /*Container(
                                   // lockresetfill0wght400grad0opsz (6:162)
                                   margin:
                                       const EdgeInsets.fromLTRB(0, 0, 10, 0),
@@ -840,7 +853,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                     height: 1.3025,
                                     color: const Color(0xffffffff),
                                   ),
-                                ),
+                                ),*/
                               ],
                             ),
                           ),
@@ -1044,7 +1057,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                                       ),
                                                       child: Center(
                                                         child: Text(
-                                                          '27º',
+                                                          '27',
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: SafeGoogleFont(
@@ -1254,10 +1267,11 @@ class _GavetaMapState extends State<GavetaMap> {
                           ),
                         ),
 
-                        /*Container(
+                        Container(
                           // container
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                          width: 418,
+                          width: 390,
+
                           decoration: BoxDecoration(
                             color: Color(0xff15426c),
                             borderRadius: BorderRadius.circular(3),
@@ -1276,7 +1290,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               ),
                             ),
                           ),
-                        ),*/
+                        ),
                       ],
                     ),
                   ),

@@ -1,11 +1,10 @@
 import 'dart:convert';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:meu_app/utils.dart';
 
 class Previsao {
+  //final String diaSemana;
   final String data;
   final String fraseAlvorecer;
   final String fraseManha;
@@ -91,14 +90,17 @@ class Previsao {
   }
 }
 
-Future<List<Previsao>> fetchPrevisoes() async {
-  final response =
-      await http.get(Uri.parse('http://45.170.17.10:5000/previsao_tempo'));
-  if (response.statusCode == 200) {
-    final List<dynamic> previsoesJson = jsonDecode(response.body)['previsoes'];
-    return previsoesJson.map((json) => Previsao.fromJson(json)).toList();
-  } else {
-    throw Exception('Falha ao carregar previsões');
+class PrevisaoTempoSemana {
+  static Future<List<Previsao>> fetchPrevisoesSemana() async {
+    final response =
+        await http.get(Uri.parse('http://45.170.17.10:5000/previsao_tempo'));
+    if (response.statusCode == 200) {
+      final List<dynamic> previsoesJson =
+          jsonDecode(response.body)['previsoes'];
+      return previsoesJson.map((json) => Previsao.fromJson(json)).toList();
+    } else {
+      throw Exception('Falha ao carregar previsões');
+    }
   }
 }
 
@@ -115,6 +117,11 @@ class PrevisaoWidget extends StatelessWidget {
           Text(previsao.data),
           Text(previsao.fraseAlvorecer),
           Text(previsao.fraseManha),
+          Text(previsao.fraseReduzida),
+          Text('Máxima ${previsao.temperaturaMax.toStringAsFixed(0)}'),
+          Text('Mínima ${previsao.temperaturaMin.toStringAsFixed(0)}'),
+          //Text(previsao.iconeAlvorecer),
+          //Text(previsao.iconeNoite),
           // Adicione os outros campos que deseja exibir
         ],
       ),

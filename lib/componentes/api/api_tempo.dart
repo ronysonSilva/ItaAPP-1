@@ -17,7 +17,7 @@ class _ApitempoState extends State<Apitempo> {
   Future<void> fetchWeatherData() async {
     try {
       final response =
-          await http.get(Uri.parse('http://45.170.17.10:5000/previsao_tempo'));
+          await http.get(Uri.parse('http://45.170.17.10:5000/clima'));
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> responseData = json.decode(response.body);
@@ -57,7 +57,7 @@ class _ApitempoState extends State<Apitempo> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Olá ${_user?.displayName?.split(" ")[0] ?? ''}',
+                '${_user?.displayName ?? ''}',
                 textAlign: TextAlign.center,
                 style: SafeGoogleFont(
                   'DM Sans',
@@ -68,16 +68,7 @@ class _ApitempoState extends State<Apitempo> {
                 ),
               ),
               Text(
-                '${weatherData['weather_description']} ${weatherData['temperatura']}°C              ',
-                style: SafeGoogleFont(
-                  'DM Sans',
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                  height: 2,
-                  color: Color.fromARGB(255, 5, 5, 5),
-                ),
-              ),
-              //Text('Umidade: ${weatherData['umidade_max']}%'),
+                  '${weatherData['weather_description']} ${weatherData['temperatura']}°C              '),
               //Text('Umidade: ${weatherData['umidade']}%'),
 
               //Text('Temperatura Máxima: ${weatherData['temp_max']}°C'),
