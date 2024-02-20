@@ -658,7 +658,7 @@ class _GavetaMapState extends State<GavetaMap> {
                                 Container(
                                   // group228Djq (6:150)
                                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                  width: 33,
+                                  width: 30,
                                   height: 35,
                                   child: Image.asset(
                                     'assets/images/icons/back_icon.png',
@@ -939,7 +939,6 @@ class _GavetaMapState extends State<GavetaMap> {
                   ),
                 ), //-------------------------------------------------------------------------------------------------------------------------
                 Positioned(
-                  // group2988r7 (6:173)
                   left: 0,
                   top: 245,
                   child: Container(
@@ -948,61 +947,102 @@ class _GavetaMapState extends State<GavetaMap> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        //=============================================================================
-
+                        //aqui se inicia os cards de previsão do tempo
                         Container(
-                          // autogroupphuv3TH (CFRC74DyYyxXjDCR24pHuV)
                           margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                           height: 119.79,
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  // autogroupphuv3TH (CFRC74DyYyxXjDCR24pHuV)
-                                  margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                                  height: 119.79,
-                                  child: SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        // First set of containers
-                                        Container(
-                                          // group295x4T (6:174)
-                                          margin: EdgeInsets.fromLTRB(
-                                              0, 0, 7.36, 0),
-                                          padding: EdgeInsets.fromLTRB(
-                                              16.81, 11.56, 16.81, 11.56),
-                                          height: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xff255c90),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                // autogrouplygx1oR (CFRCJU4dRrF41mhcVcLyGX)
-                                                margin: EdgeInsets.fromLTRB(
-                                                    0, 11.56, 7.36, 0),
-                                                width: 72.5,
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      // sex27rT (6:181)
-                                                      margin:
-                                                          EdgeInsets.fromLTRB(
-                                                              0, 0, 0, 10.47),
-                                                      width: double.infinity,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                                height: 119.79,
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      // First set of containers
+                                      Container(
+                                        margin:
+                                            EdgeInsets.fromLTRB(0, 0, 7.36, 0),
+                                        padding: EdgeInsets.fromLTRB(
+                                            16.81, 11.56, 16.81, 11.56),
+                                        height: double.infinity,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xff255c90),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0, 11.56, 7.36, 0),
+                                              width: 72.5,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        0, 0, 0, 10.47),
+                                                    width: double.infinity,
+                                                    child: Text(
+                                                      'Ter. 2',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: SafeGoogleFont(
+                                                        'Inter',
+                                                        fontSize: 16.4881286621,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        height: 1.2125,
+                                                        color:
+                                                            Color(0xffeaeaea),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    // container sexta
+                                                    width: double.infinity,
+                                                    height: 54.64,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              11.5587301254),
+                                                      color: Color.fromARGB(
+                                                          255, 255, 255, 255),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0, 0, 0, 1.05),
+                                              width: 48.34,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        0, 0, 0, 11.56),
+                                                    width: double.infinity,
+                                                    height: 42.03,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0x19e9e9e9),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              4.2031745911),
+                                                    ),
+                                                    child: Center(
                                                       child: Text(
-                                                        'Ter. 2',
+                                                        '27',
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: SafeGoogleFont(
@@ -1017,132 +1057,119 @@ class _GavetaMapState extends State<GavetaMap> {
                                                         ),
                                                       ),
                                                     ),
-                                                    Container(
-                                                      // container sexta
-                                                      width: double.infinity,
-                                                      height: 54.64,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                                11.5587301254),
-                                                        color: Color.fromARGB(
-                                                            255, 255, 255, 255),
-                                                      ),
+                                                  ),
+                                                  Container(
+                                                    width: double.infinity,
+                                                    height: 42.03,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0x19e9e9e9),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              4.2031745911),
                                                     ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                // autogroupgwgt9HM (CFRCQdZ2RomZvKekosgWGT)
-                                                margin: EdgeInsets.fromLTRB(
-                                                    0, 0, 0, 1.05),
-                                                width: 48.34,
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    Container(
-                                                      // autogroupkfuwF5V (CFRCVo562FuthvFz3cKFUw)
-                                                      margin:
-                                                          EdgeInsets.fromLTRB(
-                                                              0, 0, 0, 11.56),
-                                                      width: double.infinity,
-                                                      height: 42.03,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0x19e9e9e9),
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                                4.2031745911),
-                                                      ),
-                                                      child: Center(
-                                                        child: Text(
-                                                          '27',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: SafeGoogleFont(
-                                                            'Inter',
-                                                            fontSize:
-                                                                16.4881286621,
-                                                            fontWeight:
-                                                                FontWeight.w700,
-                                                            height: 1.2125,
-                                                            color: Color(
-                                                                0xffeaeaea),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      // autogroupdcapt8T (CFRCZD94f58t2r1rtvDcaP)
-                                                      width: double.infinity,
-                                                      height: 42.03,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0x19e9e9e9),
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                                4.2031745911),
-                                                      ),
-                                                      child: Center(
-                                                        child: Text(
-                                                          '${weatherData['temp_min']}°C',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: SafeGoogleFont(
-                                                            'Inter',
-                                                            fontSize:
-                                                                16.4881286621,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            height: 1.2125,
-                                                            color: Color(
-                                                                0xffeaeaea),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-
-                                        // Second set of containers
-                                        Container(
-                                          // group296xPD (6:182)
-                                          margin:
-                                              EdgeInsets.fromLTRB(0, 0, 8, 0),
-                                          padding: EdgeInsets.fromLTRB(
-                                              16.81, 11.56, 16.81, 11.56),
-                                          height: double.infinity,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xff255c90),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                // autogrouprelsr7D (CFRCrT9LQ4VBrJgtzYrELs)
-                                                margin: EdgeInsets.fromLTRB(
-                                                    0, 11.56, 7.36, 0),
-                                                width: 72.5,
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      // sab396K (6:189)
-                                                      margin:
-                                                          EdgeInsets.fromLTRB(
-                                                              0, 0, 0, 10.47),
-                                                      width: double.infinity,
+                                                    child: Center(
                                                       child: Text(
-                                                        'Sab. 3',
+                                                        '22',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: SafeGoogleFont(
+                                                          'Inter',
+                                                          fontSize:
+                                                              16.4881286621,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          height: 1.2125,
+                                                          color:
+                                                              Color(0xffeaeaea),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        margin:
+                                            EdgeInsets.fromLTRB(0, 0, 7.36, 0),
+                                        padding: EdgeInsets.fromLTRB(
+                                            16.81, 11.56, 16.81, 11.56),
+                                        height: double.infinity,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xff255c90),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0, 11.56, 7.36, 0),
+                                              width: 72.5,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        0, 0, 0, 10.47),
+                                                    width: double.infinity,
+                                                    child: Text(
+                                                      'Ter. 2',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: SafeGoogleFont(
+                                                        'Inter',
+                                                        fontSize: 16.4881286621,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        height: 1.2125,
+                                                        color:
+                                                            Color(0xffeaeaea),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    // container sexta
+                                                    width: double.infinity,
+                                                    height: 54.64,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              11.5587301254),
+                                                      color: Color.fromARGB(
+                                                          255, 255, 255, 255),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0, 0, 0, 1.05),
+                                              width: 48.34,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        0, 0, 0, 11.56),
+                                                    width: double.infinity,
+                                                    height: 42.03,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0x19e9e9e9),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              4.2031745911),
+                                                    ),
+                                                    child: Center(
+                                                      child: Text(
+                                                        '27',
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: SafeGoogleFont(
@@ -1157,127 +1184,191 @@ class _GavetaMapState extends State<GavetaMap> {
                                                         ),
                                                       ),
                                                     ),
-                                                    Container(
-                                                      // container sabado
-                                                      width: double.infinity,
-                                                      height: 54.64,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                                11.5587301254),
-                                                        color: Color.fromARGB(
-                                                            255, 252, 251, 251),
-                                                      ),
+                                                  ),
+                                                  Container(
+                                                    width: double.infinity,
+                                                    height: 42.03,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0x19e9e9e9),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              4.2031745911),
                                                     ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                // autogroupxakkx3m (CFRCxHJxGBYyPCrjcdxAkK)
-                                                margin: EdgeInsets.fromLTRB(
-                                                    0, 0, 0, 1.05),
-                                                width: 48.34,
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    Container(
-                                                      // autogroup2wpbTWK (CFRD3MzpaB5caPX8vq2WpB)
-                                                      margin:
-                                                          EdgeInsets.fromLTRB(
-                                                              0, 0, 0, 11.56),
-                                                      width: double.infinity,
-                                                      height: 42.03,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0x19e9e9e9),
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                                4.2031745911),
-                                                      ),
-                                                      child: Center(
-                                                        child: Text(
-                                                          '27º',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: SafeGoogleFont(
-                                                            'Inter',
-                                                            fontSize:
-                                                                16.4881286621,
-                                                            fontWeight:
-                                                                FontWeight.w700,
-                                                            height: 1.2125,
-                                                            color: Color(
-                                                                0xffeaeaea),
-                                                          ),
+                                                    child: Center(
+                                                      child: Text(
+                                                        '22',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: SafeGoogleFont(
+                                                          'Inter',
+                                                          fontSize:
+                                                              16.4881286621,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          height: 1.2125,
+                                                          color:
+                                                              Color(0xffeaeaea),
                                                         ),
                                                       ),
                                                     ),
-                                                    Container(
-                                                      // autogroupp5cpvPu (CFRD6cQQe55EiVPMw3p5cP)
-                                                      width: double.infinity,
-                                                      height: 42.03,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0x19e9e9e9),
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                                4.2031745911),
-                                                      ),
-                                                      child: Center(
-                                                        child: Text(
-                                                          '23º',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: SafeGoogleFont(
-                                                            'Inter',
-                                                            fontSize:
-                                                                16.4881286621,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            height: 1.2125,
-                                                            color: Color(
-                                                                0xffeaeaea),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
+                                      ),
 
-                                        // Add more sets of containers if needed
-                                      ],
-                                    ),
+                                      // Second set of containers
+                                      Container(
+                                        // group296xPD (6:182)
+                                        margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+                                        padding: EdgeInsets.fromLTRB(
+                                            16.81, 11.56, 16.81, 11.56),
+                                        height: double.infinity,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xff255c90),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              // autogrouprelsr7D (CFRCrT9LQ4VBrJgtzYrELs)
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0, 11.56, 7.36, 0),
+                                              width: 72.5,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                    // sab396K (6:189)
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        0, 0, 0, 10.47),
+                                                    width: double.infinity,
+                                                    child: Text(
+                                                      'Sab. 3',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: SafeGoogleFont(
+                                                        'Inter',
+                                                        fontSize: 16.4881286621,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        height: 1.2125,
+                                                        color:
+                                                            Color(0xffeaeaea),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    // container sabado
+                                                    width: double.infinity,
+                                                    height: 54.64,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              11.5587301254),
+                                                      color: Color.fromARGB(
+                                                          255, 252, 251, 251),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              // autogroupxakkx3m (CFRCxHJxGBYyPCrjcdxAkK)
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0, 0, 0, 1.05),
+                                              width: 48.34,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Container(
+                                                    // autogroup2wpbTWK (CFRD3MzpaB5caPX8vq2WpB)
+                                                    margin: EdgeInsets.fromLTRB(
+                                                        0, 0, 0, 11.56),
+                                                    width: double.infinity,
+                                                    height: 42.03,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0x19e9e9e9),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              4.2031745911),
+                                                    ),
+                                                    child: Center(
+                                                      child: Text(
+                                                        '27º',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: SafeGoogleFont(
+                                                          'Inter',
+                                                          fontSize:
+                                                              16.4881286621,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          height: 1.2125,
+                                                          color:
+                                                              Color(0xffeaeaea),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    // autogroupp5cpvPu (CFRD6cQQe55EiVPMw3p5cP)
+                                                    width: double.infinity,
+                                                    height: 42.03,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0x19e9e9e9),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              4.2031745911),
+                                                    ),
+                                                    child: Center(
+                                                      child: Text(
+                                                        '23º',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: SafeGoogleFont(
+                                                          'Inter',
+                                                          fontSize:
+                                                              16.4881286621,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          height: 1.2125,
+                                                          color:
+                                                              Color(0xffeaeaea),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-
-                                Container(
-                                    // Your existing code for the second Container
-                                    ),
-                                Container(
-                                    // Your existing code for the third Container
-                                    ),
-                                // Add more Container widgets if needed
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ),
+                        ), // aqui termina os cards de previsão do tempo
 
                         Container(
-                          // container
+                          // scrolldirection bar inicio
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                           width: 390,
-
                           decoration: BoxDecoration(
                             color: Color(0xff15426c),
                             borderRadius: BorderRadius.circular(3),
                           ),
                           child: Align(
-                            // rectangle226P6T (6:199)
                             alignment: Alignment.centerLeft,
                             child: SizedBox(
                               width: 143,
@@ -1290,7 +1381,7 @@ class _GavetaMapState extends State<GavetaMap> {
                               ),
                             ),
                           ),
-                        ),
+                        ), //scrolldirection bar final
                       ],
                     ),
                   ),
