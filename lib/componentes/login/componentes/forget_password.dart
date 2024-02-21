@@ -165,7 +165,7 @@ class ForgetPasswordPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     side: BorderSide(
                         color: Color(0xff62c6ff),
-                        width: 1.2), // cor e expessura da borda do botão
+                        width: 1.3), // cor e expessura da borda do botão
                     // Borda raio
                   ),
                   padding: EdgeInsets.all(16.0), // Padding do botão
