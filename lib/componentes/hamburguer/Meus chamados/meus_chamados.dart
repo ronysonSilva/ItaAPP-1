@@ -177,14 +177,12 @@ class meusChamados extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            // group24Zcw (30:824)
                             margin: EdgeInsets.fromLTRB(0, 2.07, 12.62, 2.19),
                             width: 118.59,
                             height: double.infinity,
                             child: Stack(
                               children: [
                                 Positioned(
-                                  // olthiagoJ4j (30:825)
                                   left: 7.5854492188,
                                   top: 0,
                                   child: Align(
@@ -206,7 +204,6 @@ class meusChamados extends StatelessWidget {
                                   ),
                                 ),
                                 Positioned(
-                                  // tempolimpo23Yzf (30:826)
                                   left: 0,
                                   top: 24.9694671631,
                                   child: Align(
@@ -231,7 +228,6 @@ class meusChamados extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            // grouppSP (30:817)
                             padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                             height: double.infinity,
                             decoration: BoxDecoration(
@@ -246,7 +242,6 @@ class meusChamados extends StatelessWidget {
                               ],
                             ),
                             child: Center(
-                              // clippathgroup7Ab (30:819)
                               child: SizedBox(
                                 width: 42,
                                 height: 42,
@@ -264,7 +259,6 @@ class meusChamados extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  // group333dPq (30:829)
                   left: 31,
                   top: 109,
                   child: Container(
@@ -274,7 +268,6 @@ class meusChamados extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          // autogroupekaxYmh (SunTBnqYCZSr1ugAjzEkAX)
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 9),
                           width: double.infinity,
                           height: 178,
@@ -290,7 +283,6 @@ class meusChamados extends StatelessWidget {
                           child: Stack(
                             children: [
                               Positioned(
-                                // rectangle2493Cf (30:835)
                                 left: 0,
                                 top: 119,
                                 child: Align(
@@ -318,7 +310,6 @@ class meusChamados extends StatelessWidget {
                                 ),
                               ),
                               Positioned(
-                                // novohospitalsofranciscoxavier5 (30:836)
                                 left: 16,
                                 top: 129,
                                 child: Align(
@@ -342,7 +333,6 @@ class meusChamados extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          // group309Y2w (30:830)
                           margin: EdgeInsets.fromLTRB(0, 0, 4.23, 0),
                           width: 28.55,
                           height: 5,
@@ -357,7 +347,6 @@ class meusChamados extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  // group246EwM (30:837)
                   left: 666,
                   top: 676,
                   child: Container(
@@ -384,14 +373,12 @@ class meusChamados extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          // autogroupzrgfm47 (SunTPcqAVionGXuVqFZRGf)
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 14),
                           width: 174,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                // autogroup1kcw1Mm (SunTYnEZiCUsXwtPP71Kcw)
                                 margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
                                 width: double.infinity,
                                 height: 49,
@@ -399,7 +386,6 @@ class meusChamados extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Container(
-                                      // group239K7Z (30:857)
                                       margin: EdgeInsets.fromLTRB(0, 0, 3, 0),
                                       padding:
                                           EdgeInsets.fromLTRB(12, 12, 12, 5.85),
@@ -418,7 +404,6 @@ class meusChamados extends StatelessWidget {
                                       ),
                                     ),
                                     Container(
-                                      // group238P9M (30:846)
                                       padding:
                                           EdgeInsets.fromLTRB(13, 12, 23, 5.85),
                                       width: 89,
@@ -439,7 +424,6 @@ class meusChamados extends StatelessWidget {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Container(
-                                            // group237Evf (30:850)
                                             margin: EdgeInsets.fromLTRB(
                                                 0, 0, 0, 0.15),
                                             width: double.infinity,
@@ -447,7 +431,6 @@ class meusChamados extends StatelessWidget {
                                             child: Stack(
                                               children: [
                                                 Positioned(
-                                                  // group236NX5 (30:851)
                                                   left: 0.5,
                                                   top: 0,
                                                   child: Align(
@@ -479,7 +462,6 @@ class meusChamados extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  // group247JZ9 (30:868)
                   left: 986,
                   top: 676,
                   child: Container(
@@ -506,7 +488,6 @@ class meusChamados extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          // rectangle212VtX (30:870)
                           margin: EdgeInsets.fromLTRB(0, 0, 14, 0),
                           width: 99,
                           height: 99,
@@ -519,21 +500,18 @@ class meusChamados extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          // autogroupgbkoCnw (SunUifT7zBtE6RHnmZGbko)
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 14),
                           width: 174,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                // autogroup8wzmviw (SunUpAHxiUVHFfgKhU8wZm)
                                 margin: EdgeInsets.fromLTRB(3, 0, 0, 9),
                                 width: 171,
                                 height: 49,
                                 child: Stack(
                                   children: [
                                     Positioned(
-                                      // pontodoguanabaraGH1 (30:871)
                                       left: 0,
                                       top: 12.375,
                                       child: Align(
@@ -554,7 +532,6 @@ class meusChamados extends StatelessWidget {
                                       ),
                                     ),
                                     Positioned(
-                                      // group240M3Z (30:872)
                                       left: 119,
                                       top: 0,
                                       child: Align(
@@ -573,7 +550,6 @@ class meusChamados extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                // autogroupvwmyFud (SunUsQhYnNUuPmYYhgvWMy)
                                 margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
                                 width: double.infinity,
                                 height: 49,
@@ -581,7 +557,6 @@ class meusChamados extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Container(
-                                      // group239BHV (30:888)
                                       margin: EdgeInsets.fromLTRB(0, 0, 3, 0),
                                       padding:
                                           EdgeInsets.fromLTRB(12, 12, 12, 5.85),
@@ -603,7 +578,6 @@ class meusChamados extends StatelessWidget {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Container(
-                                            // group237RSj (30:892)
                                             margin: EdgeInsets.fromLTRB(
                                                 1, 0, 0, 0.15),
                                             width: 52,
@@ -611,7 +585,6 @@ class meusChamados extends StatelessWidget {
                                             child: Stack(
                                               children: [
                                                 Positioned(
-                                                  // group236xBm (30:893)
                                                   left: 0.5,
                                                   top: 0,
                                                   child: Align(
@@ -627,7 +600,6 @@ class meusChamados extends StatelessWidget {
                                                   ),
                                                 ),
                                                 Positioned(
-                                                  // minT8X (30:898)
                                                   left: 0,
                                                   top: 1,
                                                   child: Align(
@@ -654,7 +626,6 @@ class meusChamados extends StatelessWidget {
                                             ),
                                           ),
                                           Text(
-                                            // distanciapontoYQs (30:890)
                                             'DISTANCIA PONTO',
                                             style: SafeGoogleFont(
                                               'Inter',
@@ -668,7 +639,6 @@ class meusChamados extends StatelessWidget {
                                       ),
                                     ),
                                     Container(
-                                      // group238si3 (30:877)
                                       padding:
                                           EdgeInsets.fromLTRB(13, 12, 23, 5.85),
                                       width: 89,
@@ -689,7 +659,6 @@ class meusChamados extends StatelessWidget {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Container(
-                                            // group237MNK (30:881)
                                             margin: EdgeInsets.fromLTRB(
                                                 0, 0, 0, 0.15),
                                             width: double.infinity,
@@ -697,7 +666,6 @@ class meusChamados extends StatelessWidget {
                                             child: Stack(
                                               children: [
                                                 Positioned(
-                                                  // group236TRM (30:882)
                                                   left: 0.5,
                                                   top: 0,
                                                   child: Align(
@@ -713,7 +681,6 @@ class meusChamados extends StatelessWidget {
                                                   ),
                                                 ),
                                                 Positioned(
-                                                  // kmxN7 (30:887)
                                                   left: 0,
                                                   top: 1,
                                                   child: Align(
@@ -740,7 +707,6 @@ class meusChamados extends StatelessWidget {
                                             ),
                                           ),
                                           Container(
-                                            // proximoonibusrTV (30:879)
                                             margin:
                                                 EdgeInsets.fromLTRB(1, 0, 0, 0),
                                             child: Text(
@@ -768,7 +734,6 @@ class meusChamados extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  // group303y2K (30:899)
                   left: 0,
                   top: 797,
                   child: Align(
