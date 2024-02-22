@@ -11,7 +11,7 @@ class NearestMarkerButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () => onPressed(),
-      style: ElevatedButton.styleFrom(primary: Colors.blue),
+      style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

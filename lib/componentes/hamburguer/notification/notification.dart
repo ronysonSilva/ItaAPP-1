@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:meu_app/componentes/api/api_tempo_semana.dart';
+
 import 'package:meu_app/main.dart';
 
-class notification extends StatelessWidget {
+class notificacoes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -10,20 +10,7 @@ class notification extends StatelessWidget {
         appBar: AppBar(
           title: Text('Previsões do Tempo'),
         ),
-        body: FutureBuilder<List<Previsao>>(
-          future: fetchPrevisoesSemana(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListaPrevisoesWidget(previsoes: snapshot.data!);
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
-            }
-            return Center(child: CircularProgressIndicator());
-          },
-        ),
       ),
     );
   }
-
-  fetchPrevisoesSemana() {}
 }

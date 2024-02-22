@@ -51,7 +51,7 @@ class MarkerInfoModal extends StatelessWidget {
             SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () => onPressed(),
-              style: ElevatedButton.styleFrom(primary: Colors.blue),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
               child: Text('Começar Agora'),
             ),
           ],

@@ -347,7 +347,7 @@ class _ProfilePageState extends State<ProfilePage> {
               TextButton(
                 onPressed: _editUserName,
                 style: TextButton.styleFrom(
-                  primary: Colors.white,
+                  foregroundColor: Colors.white,
                   backgroundColor: Colors.transparent,
                 ),
                 child: Row(
@@ -377,7 +377,7 @@ class _ProfilePageState extends State<ProfilePage> {
               TextButton(
                 onPressed: _editUserName,
                 style: TextButton.styleFrom(
-                  primary: Colors.white,
+                  foregroundColor: Colors.white,
                   backgroundColor: Colors.transparent,
                 ),
                 child: Row(
@@ -408,7 +408,7 @@ class _ProfilePageState extends State<ProfilePage> {
               TextButton(
                 onPressed: () => _esqueceuSenha(context),
                 style: TextButton.styleFrom(
-                  primary: Colors.white,
+                  foregroundColor: Colors.white,
                   backgroundColor: Colors.transparent,
                 ),
                 child: Row(
@@ -426,15 +426,14 @@ class _ProfilePageState extends State<ProfilePage> {
                 endIndent: 5,
                 color: Colors.black,
               ),
-              SizedBox(height: 100),
+              /*SizedBox(height: 100),
               TextButton(
                 onPressed: () async {
                   await widget.onLogout();
                   //_clearUserImage();
                 },
                 style: TextButton.styleFrom(
-                  primary: Color.fromARGB(255, 255, 104, 104),
-                  backgroundColor: Colors.transparent,
+                  foregroundColor: Color.fromARGB(255, 255, 104, 104), backgroundColor: Colors.transparent,
                 ),
                 child: Row(
                   children: [
@@ -444,7 +443,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     Text('Sair'), // Texto do botão
                   ],
                 ),
-              ),
+              ),*/
             ],
           ),
         ),

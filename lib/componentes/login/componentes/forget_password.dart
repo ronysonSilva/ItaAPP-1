@@ -160,7 +160,7 @@ class ForgetPasswordPage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () => _resetPassword(context),
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xff24d7ff), // Cor de fundo
+                  backgroundColor: Color(0xff24d7ff), // Cor de fundo
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                     side: BorderSide(

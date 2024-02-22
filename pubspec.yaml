@@ -118,25 +118,26 @@ flutter:
   assets:
     
     - assets/images/user_map.png
-    - assets/images/ponto.png
+    - assets/images/smctic.png
     - assets/images/frente-bus_02.png
     - assets/images/bus.png
-    - assets/images/smctic.png
+    - assets/images/Bus.png    
     - assets/images/bus_icon.png
     - assets/images/bus_color.png
     - assets/images/bus_red.png
-    - assets/images/pontos/Policlinica.jpeg
-    - assets/images/pontos/formigao.jpg
-    - assets/images/pontos/biaestampa.jpg
-    - assets/images/Bus.png
-    - assets/images/pontos/w.jpeg
+    - assets/images/ponto.png
     - assets/images/itaguai.png
     - assets/images/user.jpg
     - assets/images/meio_brasão.png
     - assets/images/FundoAzulApp.jpg
     - assets/images/FundoAzulApp.png
-    - assets/images/icons/trash.png
-    - assets/images/app/splash.png
+    - assets/images/caminhao_lixo_icon.png
+    - assets/images/pontos/Policlinica.jpeg
+    - assets/images/pontos/formigao.jpg
+    - assets/images/pontos/biaestampa.jpg    
+    - assets/images/pontos/w.jpeg
+    
+    - assets/images/icons/trash.png    
     - assets/images/icons/icon_brasao.png
     - assets/images/icons/trash.png
     - assets/images/icons/caminhao_lixo_icon.png
@@ -160,8 +161,24 @@ flutter:
     - assets/images/icons/defesa_civil.png
     - assets/images/icons/defesa_civil_icon.png
     - assets/images/icons/instagram_icon.png
-    - assets/images/app/icon-android.png
-    - assets/images/caminhao_lixo_icon.png
+    - assets/images/icons/
+    - assets/images/icons/
+    - assets/images/icons/
+    - assets/images/icons/
+    - assets/images/icons/
+    - assets/images/icons/
+    - assets/images/icons/
+    - assets/images/icons/
+    - assets/images/icons/
+    - assets/images/icons/
+    - assets/images/icons/
+    - assets/images/icons/
+    - assets/images/icons/
+    - assets/images/icons/
+
+
+    - assets/images/app/icon-android.png 
+    - assets/images/app/splash.png
 
 
 
