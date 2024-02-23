@@ -120,8 +120,8 @@ flutter:
     - assets/images/user_map.png
     - assets/images/smctic.png
     - assets/images/frente-bus_02.png
-    - assets/images/bus.png
-    - assets/images/Bus.png    
+    - assets/images/logo.png
+        
     - assets/images/bus_icon.png
     - assets/images/bus_color.png
     - assets/images/bus_red.png
