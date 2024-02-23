@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:meu_app/componentes/api/api_tempo_semana.dart';
-import 'package:meu_app/main.dart';
 
 class PrevisaoSemana extends StatelessWidget {
   @override

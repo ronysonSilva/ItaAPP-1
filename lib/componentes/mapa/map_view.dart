@@ -171,17 +171,6 @@ class _MapViewState extends State<MapView> {
     mapStyleManager = MapStyleManager(_controller);
   }
 
-  int _indiceAtual = 0;
-  final List<Widget> _telas = [
-    //MapView("Minha conta"),
-    chamados("chamados"),
-  ];
-  void _onItemTapped(int index) {
-    setState(() {
-      _indiceAtual = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

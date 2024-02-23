@@ -202,572 +202,517 @@ class _GavetaMapState extends State<GavetaMap> {
       child: Container(
         width: double.infinity,
         height: 844,
-        child: ClipRect(
-          child: Stack(
-            children: [
-              const Positioned(
-                left: 100,
-                top: 0,
-                child: Align(
-                  child: SizedBox(
-                    width: 612,
-                    height: 796,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 192,
-                top: 0,
-                child: Align(
-                  child: SizedBox(
-                    width: 197,
-                    height: 127,
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 227,
-                top: 469,
-                child: Container(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  width: 23,
-                  height: 23,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(11.7109413147),
-                    gradient: const LinearGradient(
-                      begin: Alignment(-2.089, -3.241),
-                      end: Alignment(2.289, 3.474),
-                      colors: <Color>[
-                        Color(0xff4769e3),
-                        Color(0xff1669e7),
-                        Color(0xff670aff)
-                      ],
-                      stops: <double>[0, 0.586, 1],
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 0,
-                top: 598,
-                child: Container(
-                  padding: const EdgeInsets.fromLTRB(30, 56.27, 29, 43.54),
+        child: Stack(
+          children: [
+            Positioned(
+              left: 0,
+              top: 0,
+              child: Align(
+                child: SizedBox(
                   width: 390,
-                  height: 245,
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment(1, 1.031),
-                      end: Alignment(1, -1),
-                      colors: <Color>[
-                        Color(0xff003768),
-                        Color(0xa4003768),
-                        Color(0x00003768)
-                      ],
-                      stops: <double>[0, 0.461, 1],
+                  height: 844,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 0, 55, 104),
                     ),
                   ),
                 ),
               ),
-              Positioned(
-                left: 0,
-                top: 0,
-                child: ClipRect(
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(
-                      sigmaX: 15,
-                      sigmaY: 15,
-                    ),
-                    child: Align(
-                      child: SizedBox(
-                        width: 390,
-                        height: 844,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            color: Color(0xe5003768),
-                          ),
+            ),
+            Positioned(
+              left: 36,
+              top: 38,
+              child: Container(
+                width: 329,
+                height: 665,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      left: 65,
+                      top: 8,
+                      child: Container(
+                        width: 264,
+                        height: 40,
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.fromLTRB(0, 21, 10, 0),
+                              child: Container(
+                                child: Text(
+                                  'Temperatura: ${weatherData['temperatura']}°C',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              child: Row(
+                                children: [
+                                  IconButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              PrevisaoSemana(),
+                                        ),
+                                      );
+                                    },
+                                    icon: const Icon(
+                                      Icons.thermostat_auto_outlined,
+                                      color: Colors.white,
+                                    ),
+                                    iconSize: 20,
+                                    padding: const EdgeInsets.all(12),
+                                    splashRadius: 20,
+                                    color: const Color(0x4cdcebf3),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Settings(),
+                                        ),
+                                      );
+                                    },
+                                    icon: const Icon(
+                                      Icons.settings,
+                                      color: Colors.white,
+                                    ),
+                                    iconSize: 20,
+                                    padding: const EdgeInsets.all(12),
+                                    splashRadius: 20,
+                                    color:
+                                        const Color.fromARGB(75, 9, 125, 190),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              width: 30,
+                              height: 35,
+                              child: Image.asset(
+                                'assets/images/icons/back_icon.png',
+                                width: 33,
+                                height: 35,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 36,
-                top: 38,
-                child: Container(
-                  width: 329,
-                  height: 665,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 65,
-                        top: 7.9,
+                    Positioned(
+                      left: 4,
+                      top: 400,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => meusChamados()),
+                          );
+                        },
                         child: Container(
-                          width: 264,
-                          height: 40,
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          width: 150,
+                          height: 24,
                           child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Container(
-                                margin: const EdgeInsets.fromLTRB(0, 21, 10, 0),
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                    color: Colors.transparent,
-                                  ),
-                                  child: Text(
-                                    'Temperatura: ${weatherData['temperatura']}°C',
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                PrevisaoSemana(),
-                                          ),
-                                        );
-                                      },
-                                      icon: const Icon(
-                                        Icons.thermostat_auto_outlined,
-                                        color: Colors.white,
-                                      ),
-                                      iconSize: 20,
-                                      padding: const EdgeInsets.all(12),
-                                      splashRadius: 20,
-                                      color: const Color(0x4cdcebf3),
-                                    ),
-                                    IconButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => Settings(),
-                                          ),
-                                        );
-                                      },
-                                      icon: const Icon(
-                                        Icons.settings,
-                                        color: Colors.white,
-                                      ),
-                                      iconSize: 20,
-                                      padding: const EdgeInsets.all(12),
-                                      splashRadius: 20,
-                                      color:
-                                          const Color.fromARGB(75, 9, 126, 189),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                width: 30,
-                                height: 35,
+                                margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
+                                width: 20,
+                                height: 20,
                                 child: Image.asset(
-                                  'assets/images/icons/back_icon.png',
-                                  width: 33,
-                                  height: 35,
+                                  'assets/images/icons/chamados_icon.png',
+                                  width: 20,
+                                  height: 20,
+                                ),
+                              ),
+                              Text(
+                                'Meus Chamados',
+                                textAlign: TextAlign.center,
+                                style: SafeGoogleFont(
+                                  'DM Sans',
+                                  fontSize: 14.4000453949,
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.3025,
+                                  color: Color(0xffffffff),
                                 ),
                               ),
                             ],
                           ),
                         ),
                       ),
-                      Positioned(
-                        left: 4,
-                        top: 400,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => meusChamados()),
-                            );
-                          },
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                            width: 150,
-                            height: 24,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(0, 0, 8, 0),
-                                  width: 20,
-                                  height: 20,
-                                  child: Image.asset(
-                                    'assets/images/icons/chamados_icon.png',
-                                    width: 20,
-                                    height: 20,
-                                  ),
-                                ),
-                                Text(
-                                  'Meus Chamados',
-                                  textAlign: TextAlign.center,
-                                  style: SafeGoogleFont(
-                                    'DM Sans',
-                                    fontSize: 14.4000453949,
-                                    fontWeight: FontWeight.w500,
-                                    height: 1.3025,
-                                    color: Color(0xffffffff),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        left: 4,
-                        top: 500,
-                        child: GestureDetector(
-                          onTap: () async {
-                            await Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => ProfilePage(
-                                  onLogout: widget.onLogout,
-                                  onUpdate: (user, userImage) {
-                                    widget.onProfileImageChanged();
-                                    widget.onUpdate(_user, _userImage);
-                                  },
-                                  userName:
-                                      _user?.displayName ?? 'Nome Dinâmico',
-                                  userEmail: _user?.email ??
-                                      'email.dinamico@example.com',
-                                  userImageURL:
-                                      _user?.photoURL ?? 'URL da imagem',
-                                  profile: null,
-                                  userImageUrl: '',
-                                ),
+                    ),
+                    Positioned(
+                      left: 4,
+                      top: 500,
+                      child: GestureDetector(
+                        onTap: () async {
+                          await Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => ProfilePage(
+                                onLogout: widget.onLogout,
+                                onUpdate: (user, userImage) {
+                                  widget.onProfileImageChanged();
+                                  widget.onUpdate(_user, _userImage);
+                                },
+                                userName: _user?.displayName ?? 'Nome Dinâmico',
+                                userEmail: _user?.email ??
+                                    'email.dinamico@example.com',
+                                userImageURL:
+                                    _user?.photoURL ?? 'URL da imagem',
+                                profile: null,
+                                userImageUrl: '',
                               ),
-                            );
-                            _loadUserImage();
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                            width: 500,
-                            height: 65,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  margin:
-                                      const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                  width: 20,
-                                  height: 20,
-                                  child: Image.asset(
-                                    'assets/images/icons/profile_icon.png',
-                                    width: 20,
-                                    height: 20,
-                                  ),
-                                ),
-                                Text(
-                                  'Meu Perfil',
-                                  textAlign: TextAlign.center,
-                                  style: SafeGoogleFont(
-                                    'DM Sans',
-                                    fontSize: 14.4000453949,
-                                    fontWeight: FontWeight.w500,
-                                    height: 1.3025,
-                                    color: const Color(0xffffffff),
-                                  ),
-                                ),
-                              ],
                             ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        left: 0,
-                        top: 460,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => notificacoes()),
-                            );
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                            width: 150,
-                            height: 24,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  margin:
-                                      const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                  width: 24,
-                                  height: 24,
-                                  child: Icon(Icons.notifications_outlined,
-                                      color: Colors.white),
-                                ),
-                                Text(
-                                  'Notificações',
-                                  textAlign: TextAlign.center,
-                                  style: SafeGoogleFont(
-                                    'DM Sans',
-                                    fontSize: 14.4000453949,
-                                    fontWeight: FontWeight.w500,
-                                    height: 1.3025,
-                                    color: const Color(0xffffffff),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        left: 1,
-                        top: 0,
+                          );
+                          _loadUserImage();
+                        },
                         child: Container(
-                          padding:
-                              const EdgeInsets.fromLTRB(3.69, 3.69, 3.69, 3.69),
-                          width: 48.23,
-                          height: 48.23,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(24.1128807068),
-                            gradient: const LinearGradient(
-                              begin: Alignment(-2.089, -3.241),
-                              end: Alignment(2.289, 3.474),
-                              colors: <Color>[
-                                Color(0xff4769e3),
-                                Color(0xff1669e7),
-                                Color(0xff670aff)
-                              ],
-                              stops: <double>[0, 0.586, 1],
-                            ),
-                          ),
-                          child: Center(
-                            child: CircleAvatar(
-                              radius: 70,
-                              backgroundImage: _userImage != null
-                                  ? FileImage(_userImage!)
-                                  : null,
-                              child: _userImage == null
-                                  ? Text(
-                                      _generateAvatarText(),
-                                      style: SafeGoogleFont(
-                                        'Inter',
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.w500,
-                                        height: 1,
-                                        color:
-                                            const Color.fromARGB(255, 0, 0, 0),
-                                      ),
-                                    )
-                                  : null,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        left: 62,
-                        top: 1,
-                        child: Align(
-                          child: SizedBox(
-                            width: 100,
-                            height: 50,
-                            child: Text(
-                              'Olá ${_user?.displayName?.split(" ")[0] ?? "Usuário"}',
-                              textAlign: TextAlign.center,
-                              style: SafeGoogleFont(
-                                'DM Sans',
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
-                                height: 2,
-                                color: const Color(0xffffffff),
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          width: 500,
+                          height: 65,
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                width: 20,
+                                height: 20,
+                                child: Image.asset(
+                                  'assets/images/icons/profile_icon.png',
+                                  width: 20,
+                                  height: 20,
+                                ),
                               ),
+                              Text(
+                                'Meu Perfil',
+                                textAlign: TextAlign.center,
+                                style: SafeGoogleFont(
+                                  'DM Sans',
+                                  fontSize: 14.4000453949,
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.3025,
+                                  color: const Color(0xffffffff),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 0,
+                      top: 460,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => notificacoes()),
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          width: 150,
+                          height: 24,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                width: 24,
+                                height: 24,
+                                child: Icon(Icons.notifications_outlined,
+                                    color: Colors.white),
+                              ),
+                              Text(
+                                'Notificações',
+                                textAlign: TextAlign.center,
+                                style: SafeGoogleFont(
+                                  'DM Sans',
+                                  fontSize: 14.4000453949,
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.3025,
+                                  color: const Color(0xffffffff),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 1,
+                      top: 0,
+                      child: Container(
+                        padding:
+                            const EdgeInsets.fromLTRB(3.69, 3.69, 3.69, 3.69),
+                        width: 48.23,
+                        height: 48.23,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(24.1128807068),
+                          gradient: const LinearGradient(
+                            begin: Alignment(-2.089, -3.241),
+                            end: Alignment(2.289, 3.474),
+                            colors: <Color>[
+                              Color(0xff4769e3),
+                              Color(0xff1669e7),
+                              Color(0xff670aff)
+                            ],
+                            stops: <double>[0, 0.586, 1],
+                          ),
+                        ),
+                        child: Center(
+                          child: CircleAvatar(
+                            radius: 70,
+                            backgroundImage: _userImage != null
+                                ? FileImage(_userImage!)
+                                : null,
+                            child: _userImage == null
+                                ? Text(
+                                    _generateAvatarText(),
+                                    style: SafeGoogleFont(
+                                      'Inter',
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w500,
+                                      height: 1,
+                                      color: const Color.fromARGB(255, 0, 0, 0),
+                                    ),
+                                  )
+                                : null,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 62,
+                      top: 1,
+                      child: Align(
+                        child: SizedBox(
+                          width: 100,
+                          height: 50,
+                          child: Text(
+                            'Olá ${_user?.displayName?.split(" ")[0] ?? "Usuário"}',
+                            textAlign: TextAlign.center,
+                            style: SafeGoogleFont(
+                              'DM Sans',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                              height: 2,
+                              color: const Color(0xffffffff),
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              Positioned(
-                // container hoje
-                left: 20,
-                top: 125,
-                child: Align(
-                  child: SizedBox(
-                    width: 335,
-                    height: 105,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color(0xffc6d9eb),
-                        boxShadow: [
-                          const BoxShadow(
-                            color: Color(0x262e3c61),
-                            offset: Offset(0, 10),
-                            blurRadius: 0,
-                          ),
-                        ],
-                      ),
+            ),
+            Positioned(
+              // container hoje
+              left: 20,
+              top: 125,
+              child: Align(
+                child: SizedBox(
+                  width: 335,
+                  height: 105,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color(0xffc6d9eb),
+                      boxShadow: [
+                        const BoxShadow(
+                          color: Color(0x262e3c61),
+                          offset: Offset(0, 10),
+                          blurRadius: 0,
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ),
-              Positioned(
-                // rectangle220txK (6:202)
-                left: 301,
-                top: 180,
-                child: Align(
-                  child: SizedBox(
-                    width: 46,
-                    height: 40,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: const Color(0xffb3c9de),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 301,
-                top: 135,
-                child: Container(
+            ),
+            Positioned(
+              left: 301,
+              top: 180,
+              child: Align(
+                child: SizedBox(
                   width: 46,
                   height: 40,
-                  decoration: BoxDecoration(
-                    color: const Color(0xffb3c9de),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Center(
-                    child: Text(
-                      '${weatherData['temp_max']}°C',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        height: 1,
-                        color: const Color(0xff1b5a98),
-                      ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      color: const Color(0xffb3c9de),
                     ),
                   ),
                 ),
               ),
-              Positioned(
-                left: 301,
-                top: 185,
-                child: Container(
-                  width: 46,
-                  height: 28,
-                  decoration: BoxDecoration(
-                    color: const Color(0xffb3c9de),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Center(
-                    child: Text(
-                      '${weatherData['temp_min']}°C',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        height: 1,
-                        color: const Color(0xff1b5a98),
-                      ),
+            ),
+            Positioned(
+              left: 301,
+              top: 135,
+              child: Container(
+                width: 46,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: const Color(0xffb3c9de),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Center(
+                  child: Text(
+                    '${weatherData['temp_max']}°C',
+                    textAlign: TextAlign.center,
+                    style: SafeGoogleFont(
+                      'Inter',
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      height: 1,
+                      color: const Color(0xff1b5a98),
                     ),
                   ),
                 ),
               ),
-              Positioned(
-                left: 64,
-                top: 136,
-                child: Align(
-                  child: SizedBox(
-                    width: 35,
-                    height: 20,
-                    child: Text(
-                      'Hoje',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125,
-                        color: const Color(0xff1b5a98),
-                      ),
+            ),
+            Positioned(
+              left: 301,
+              top: 185,
+              child: Container(
+                width: 46,
+                height: 28,
+                decoration: BoxDecoration(
+                  color: const Color(0xffb3c9de),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Center(
+                  child: Text(
+                    '${weatherData['temp_min']}°C',
+                    textAlign: TextAlign.center,
+                    style: SafeGoogleFont(
+                      'Inter',
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      height: 1,
+                      color: const Color(0xff1b5a98),
                     ),
                   ),
                 ),
               ),
-              Positioned(
-                left: 137,
-                top: 170,
-                child: Align(
-                  child: SizedBox(
-                    width: 98,
-                    height: 39,
-                    child: Text(
-                      '${weatherData['weather_description']}',
-                      style: SafeGoogleFont(
-                        'Inter',
-                        fontSize: 13,
-                        fontWeight: FontWeight.w700,
-                        height: 1.2125,
-                        color: const Color(0xff174976),
-                      ),
+            ),
+            Positioned(
+              left: 64,
+              top: 136,
+              child: Align(
+                child: SizedBox(
+                  width: 35,
+                  height: 20,
+                  child: Text(
+                    'Hoje',
+                    textAlign: TextAlign.center,
+                    style: SafeGoogleFont(
+                      'Inter',
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      height: 1.2125,
+                      color: const Color(0xff1b5a98),
                     ),
                   ),
                 ),
               ),
-              Positioned(
-                left: 54,
-                top: 163,
-                child: Align(
-                  child: SizedBox(
-                    width: 69,
-                    height: 52,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(11),
+            ),
+            Positioned(
+              left: 137,
+              top: 170,
+              child: Align(
+                child: SizedBox(
+                  width: 98,
+                  height: 39,
+                  child: Text(
+                    '${weatherData['weather_description']}',
+                    style: SafeGoogleFont(
+                      'Inter',
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                      height: 1.2125,
+                      color: const Color(0xff174976),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 54,
+              top: 163,
+              child: Align(
+                child: SizedBox(
+                  width: 69,
+                  height: 52,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(11),
+                    child: Image.asset(
+                      'assets/images/icons/sun_icon.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 125,
+              top: 137,
+              child: Container(
+                width: 400,
+                height: 17,
+                child: Row(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      width: 10,
+                      height: 90,
                       child: Image.asset(
-                        'assets/images/icons/sun_icon.png',
-                        fit: BoxFit.cover,
+                        'assets/images/icons/gota_icon.png',
+                        width: 6.18,
+                        height: 9.88,
                       ),
                     ),
-                  ),
+                    Text(
+                      '${weatherData['humidity']} %',
+                      textAlign: TextAlign.center,
+                      style: SafeGoogleFont(
+                        'Inter',
+                        fontSize: 10,
+                        fontWeight: FontWeight.w700,
+                        height: 1,
+                        color: const Color(0xff86a1b9),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Positioned(
-                left: 125,
-                top: 137,
-                child: Container(
-                  width: 400,
-                  height: 17,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                        width: 10,
-                        height: 90,
-                        child: Image.asset(
-                          'assets/images/icons/gota_icon.png',
-                          width: 6.18,
-                          height: 9.88,
-                        ),
-                      ),
-                      Text(
-                        '${weatherData['humidity']} %',
-                        textAlign: TextAlign.center,
+            ),
+            Positioned(
+              left: 190,
+              top: 133,
+              child: Container(
+                width: 400,
+                height: 25,
+                child: Row(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                      width: 12,
+                      height: 90,
+                      child: const Icon(Icons.air, color: Color(0xff86a1b9)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 0.0, left: 10.0),
+                      child: Text(
+                        '  ${weatherData['wind_speed']} m/s',
                         style: SafeGoogleFont(
                           'Inter',
                           fontSize: 10,
@@ -776,44 +721,12 @@ class _GavetaMapState extends State<GavetaMap> {
                           color: const Color(0xff86a1b9),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              Positioned(
-                left: 190,
-                top: 133,
-                child: Container(
-                  width: 400,
-                  height: 25,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        width: 12,
-                        height: 90,
-                        child: const Icon(Icons.air, color: Color(0xff86a1b9)),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 0.0, left: 10.0),
-                        child: Text(
-                          '  ${weatherData['wind_speed']} m/s',
-                          style: SafeGoogleFont(
-                            'Inter',
-                            fontSize: 10,
-                            fontWeight: FontWeight.w700,
-                            height: 1,
-                            color: const Color(0xff86a1b9),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
